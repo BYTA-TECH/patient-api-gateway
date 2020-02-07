@@ -210,10 +210,10 @@ jhipster:
 # application:
 application:
 doctor:
-   url: 35.223.215.128:8083
+   url: 35.209.250.234:8083
 
 patient:  
-   url: 35.223.215.128:8099
+   url: 35.209.250.234:8099
    
 elasticsearch:
    host: 81b3d974a18b4c16bc3cdbb3595ffcf9.us-central1.gcp.cloud.es.io
