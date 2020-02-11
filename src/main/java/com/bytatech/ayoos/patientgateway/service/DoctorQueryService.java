@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.ReviewDTO;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.UserRatingDTO;
+
 
 public interface DoctorQueryService {
 

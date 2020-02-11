@@ -1,266 +1,152 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
-import java.util.Objects;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.WorkPlace;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
+import java.time.OffsetDateTime;
 import java.time.LocalDate;
-import java.util.Date;
-
-//import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 /**
- * SessionInfo
+ * A SessionInfo.
  */
-@Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T12:19:39.021+05:30[Asia/Calcutta]")
-//@Document(indexName="sessioninfo")
-public class SessionInfo   {
-  @JsonProperty("date")
-  private LocalDate date = null;
 
-  @JsonProperty("fromTime")
-  private Double fromTime = null;
+public class SessionInfo  {
 
-  @JsonProperty("id")
-  private Long id = null;
-
-  @JsonProperty("interval")
-  private Double interval = null;
-
-  @JsonProperty("sessionName")
-  private String sessionName = null;
-
-  @JsonProperty("toTime")
-  private Double toTime = null;
-
-  @JsonProperty("weekDay")
-  private Integer weekDay = null;
-
-  @JsonProperty("workPlace")
-  private WorkPlace workPlace = null;
-
-  public SessionInfo date(LocalDate date) {
-    this.date = date;
-    return this;
-  }
-
-  /**
-   * Get date
-   * @return date
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public LocalDate getDate() {
-    return date;
-  }
-
-  public void setDate(LocalDate date) {
-    this.date = date;
-  }
-
-  public SessionInfo fromTime(Double fromTime) {
-    this.fromTime = fromTime;
-    return this;
-  }
-
-  /**
-   * Get fromTime
-   * minimum: 0
-   * @return fromTime
-  **/
-  @ApiModelProperty(value = "")
-
-@DecimalMin("0")
-  public Double getFromTime() {
-    return fromTime;
-  }
-
-  public void setFromTime(Double fromTime) {
-    this.fromTime = fromTime;
-  }
-
-  public SessionInfo id(Long id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
+    private static final long serialVersionUID = 1L;
 
 
-  public Long getId() {
-    return id;
-  }
+    private Long id;
 
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public SessionInfo interval(Double interval) {
-    this.interval = interval;
-    return this;
-  }
-
-  /**
-   * Get interval
-   * @return interval
-  **/
-  @ApiModelProperty(value = "")
+   
+    private String sessionName;
 
 
-  public Double getInterval() {
-    return interval;
-  }
-
-  public void setInterval(Double interval) {
-    this.interval = interval;
-  }
-
-  public SessionInfo sessionName(String sessionName) {
-    this.sessionName = sessionName;
-    return this;
-  }
-
-  /**
-   * Get sessionName
-   * @return sessionName
-  **/
-  @ApiModelProperty(value = "")
+    private LocalDate date;
 
 
-  public String getSessionName() {
-    return sessionName;
-  }
+    private OffsetDateTime fromTime;
 
-  public void setSessionName(String sessionName) {
-    this.sessionName = sessionName;
-  }
+  
+    private OffsetDateTime toTime;
 
-  public SessionInfo toTime(Double toTime) {
-    this.toTime = toTime;
-    return this;
-  }
+ 
+    private Long interval;
 
-  /**
-   * Get toTime
-   * maximum: 23
-   * @return toTime
-  **/
-  @ApiModelProperty(value = "")
+   
+    private WorkPlace workPlace;
 
- @DecimalMax("23") 
-  public Double getToTime() {
-    return toTime;
-  }
-
-  public void setToTime(Double toTime) {
-    this.toTime = toTime;
-  }
-
-  public SessionInfo weekDay(Integer weekDay) {
-    this.weekDay = weekDay;
-    return this;
-  }
-
-  /**
-   * Get weekDay
-   * @return weekDay
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Integer getWeekDay() {
-    return weekDay;
-  }
-
-  public void setWeekDay(Integer weekDay) {
-    this.weekDay = weekDay;
-  }
-
-  public SessionInfo workPlace(WorkPlace workPlace) {
-    this.workPlace = workPlace;
-    return this;
-  }
-
-  /**
-   * Get workPlace
-   * @return workPlace
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public WorkPlace getWorkPlace() {
-    return workPlace;
-  }
-
-  public void setWorkPlace(WorkPlace workPlace) {
-    this.workPlace = workPlace;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public Long getId() {
+        return id;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public void setId(Long id) {
+        this.id = id;
     }
-    SessionInfo sessionInfo = (SessionInfo) o;
-    return Objects.equals(this.date, sessionInfo.date) &&
-        Objects.equals(this.fromTime, sessionInfo.fromTime) &&
-        Objects.equals(this.id, sessionInfo.id) &&
-        Objects.equals(this.interval, sessionInfo.interval) &&
-        Objects.equals(this.sessionName, sessionInfo.sessionName) &&
-        Objects.equals(this.toTime, sessionInfo.toTime) &&
-        Objects.equals(this.weekDay, sessionInfo.weekDay) &&
-        Objects.equals(this.workPlace, sessionInfo.workPlace);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(date, fromTime, id, interval, sessionName, toTime, weekDay, workPlace);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class SessionInfo {\n");
-    
-    sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    fromTime: ").append(toIndentedString(fromTime)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
-    sb.append("    sessionName: ").append(toIndentedString(sessionName)).append("\n");
-    sb.append("    toTime: ").append(toIndentedString(toTime)).append("\n");
-    sb.append("    weekDay: ").append(toIndentedString(weekDay)).append("\n");
-    sb.append("    workPlace: ").append(toIndentedString(workPlace)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public String getSessionName() {
+        return sessionName;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public SessionInfo sessionName(String sessionName) {
+        this.sessionName = sessionName;
+        return this;
+    }
+
+    public void setSessionName(String sessionName) {
+        this.sessionName = sessionName;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public SessionInfo date(LocalDate date) {
+        this.date = date;
+        return this;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public OffsetDateTime getFromTime() {
+        return fromTime;
+    }
+
+    public SessionInfo fromTime(OffsetDateTime fromTime) {
+        this.fromTime = fromTime;
+        return this;
+    }
+
+    public void setFromTime(OffsetDateTime fromTime) {
+        this.fromTime = fromTime;
+    }
+
+    public OffsetDateTime getToTime() {
+        return toTime;
+    }
+
+    public SessionInfo toTime(OffsetDateTime toTime) {
+        this.toTime = toTime;
+        return this;
+    }
+
+    public void setToTime(OffsetDateTime toTime) {
+        this.toTime = toTime;
+    }
+
+    public Long getInterval() {
+        return interval;
+    }
+
+    public SessionInfo interval(Long interval) {
+        this.interval = interval;
+        return this;
+    }
+
+    public void setInterval(Long interval) {
+        this.interval = interval;
+    }
+
+    public WorkPlace getWorkPlace() {
+        return workPlace;
+    }
+
+    public SessionInfo workPlace(WorkPlace workPlace) {
+        this.workPlace = workPlace;
+        return this;
+    }
+
+    public void setWorkPlace(WorkPlace workPlace) {
+        this.workPlace = workPlace;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof SessionInfo)) {
+            return false;
+        }
+        return id != null && id.equals(((SessionInfo) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    @Override
+    public String toString() {
+        return "SessionInfo{" +
+            "id=" + getId() +
+            ", sessionName='" + getSessionName() + "'" +
+            ", date='" + getDate() + "'" +
+            ", fromTime='" + getFromTime() + "'" +
+            ", toTime='" + getToTime() + "'" +
+            ", interval=" + getInterval() +
+            "}";
+    }
 }
-
