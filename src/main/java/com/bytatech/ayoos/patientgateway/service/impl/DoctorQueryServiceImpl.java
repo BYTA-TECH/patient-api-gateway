@@ -1,6 +1,7 @@
 package com.bytatech.ayoos.patientgateway.service.impl;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,7 @@ import com.bytatech.ayoos.patientgateway.client.doctor.api.ReviewResourceApi;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Qualification;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.ReviewDTO;
+import com.bytatech.ayoos.patientgateway.client.doctor.model.SessionInfo;
 //import com.bytatech.ayoos.patientgateway.client.doctor.model.UserRatingDTO;
 import com.bytatech.ayoos.patientgateway.service.*;
 import com.bytatech.ayoos.patientgateway.config.*;
@@ -91,4 +93,16 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
 	}
 
 
+	@Override
+	public ResponseEntity<SessionInfo> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date)
+	{
+		QueryBuilder dslQuery=QueryBuilders.boolQuery().must(QueryBuilders.termQuery("doctorIdpCode.keyword",doctorIdpCode)).must(QueryBuilders.termQuery("date",date));
+		SearchSourceBuilder builder = new SearchSourceBuilder();
+		builder.query(dslQuery);
+        SearchResponse response = serviceUtility.searchResponseForObject("sessioninfo", dslQuery);
+		
+		return ResponseEntity.ok().body(serviceUtility.getObjectResult(response, new SessionInfo()));
+
+	}
+	
 }
