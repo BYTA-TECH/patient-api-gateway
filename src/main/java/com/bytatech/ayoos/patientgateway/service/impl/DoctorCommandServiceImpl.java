@@ -22,11 +22,11 @@ import org.springframework.stereotype.Service;
 
 import com.bytatech.ayoos.patientgateway.client.doctor.api.DoctorResourceApi;
 import com.bytatech.ayoos.patientgateway.client.doctor.api.ReviewResourceApi;
-import com.bytatech.ayoos.patientgateway.client.doctor.api.UserRatingResourceApi;
+//import com.bytatech.ayoos.patientgateway.client.doctor.api.UserRatingResourceApi;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.ReviewDTO;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.UserRatingDTO;
-import com.bytatech.ayoos.patientgateway.service.*;
+//import com.bytatech.ayoos.patientgateway.client.doctor.model.UserRatingDTO;
+//import com.bytatech.ayoos.patientgateway.service.*;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -47,8 +47,8 @@ public class DoctorCommandServiceImpl implements DoctorCommandService{
 	@Autowired
 	DoctorResourceApi doctorResourceApi;
 	
-	@Autowired
-	UserRatingResourceApi userRatingResourceApi;
+//	@Autowired
+//	UserRatingResourceApi userRatingResourceApi;
 	
 	@Autowired
 	ReviewResourceApi reviewResourceApi;
@@ -57,12 +57,12 @@ public class DoctorCommandServiceImpl implements DoctorCommandService{
 
 	
 	
-	@Override
-	public ResponseEntity<UserRatingDTO> createUserRating(UserRatingDTO userRatingDTO) {
-		log.debug("<<<<<<<< createUserRating >>>>>>>>",userRatingDTO);
-		return userRatingResourceApi.createUserRatingUsingPOST(userRatingDTO);
-	}
-	
+//	@Override
+//	public ResponseEntity<UserRatingDTO> createUserRating(UserRatingDTO userRatingDTO) {
+//		log.debug("<<<<<<<< createUserRating >>>>>>>>",userRatingDTO);
+//		return userRatingResourceApi.createUserRatingUsingPOST(userRatingDTO);
+//	}
+//	
 	@Override
 	public ResponseEntity<ReviewDTO> createReview(ReviewDTO reviewDTO) {
 		log.debug("<<<<<<createReview >>>>>>>>{}",reviewDTO);

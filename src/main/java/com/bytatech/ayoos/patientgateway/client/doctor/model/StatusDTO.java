@@ -13,14 +13,14 @@ import javax.validation.constraints.*;
  * StatusDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T12:19:39.021+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-11T10:00:57.652+05:30[Asia/Kolkata]")
 
 public class StatusDTO   {
   @JsonProperty("id")
   private Long id = null;
 
-  @JsonProperty("reservedSlotId")
-  private Long reservedSlotId = null;
+  @JsonProperty("slotId")
+  private Long slotId = null;
 
   @JsonProperty("status")
   private String status = null;
@@ -45,24 +45,24 @@ public class StatusDTO   {
     this.id = id;
   }
 
-  public StatusDTO reservedSlotId(Long reservedSlotId) {
-    this.reservedSlotId = reservedSlotId;
+  public StatusDTO slotId(Long slotId) {
+    this.slotId = slotId;
     return this;
   }
 
   /**
-   * Get reservedSlotId
-   * @return reservedSlotId
+   * Get slotId
+   * @return slotId
   **/
   @ApiModelProperty(value = "")
 
 
-  public Long getReservedSlotId() {
-    return reservedSlotId;
+  public Long getSlotId() {
+    return slotId;
   }
 
-  public void setReservedSlotId(Long reservedSlotId) {
-    this.reservedSlotId = reservedSlotId;
+  public void setSlotId(Long slotId) {
+    this.slotId = slotId;
   }
 
   public StatusDTO status(String status) {
@@ -96,13 +96,13 @@ public class StatusDTO   {
     }
     StatusDTO statusDTO = (StatusDTO) o;
     return Objects.equals(this.id, statusDTO.id) &&
-        Objects.equals(this.reservedSlotId, statusDTO.reservedSlotId) &&
+        Objects.equals(this.slotId, statusDTO.slotId) &&
         Objects.equals(this.status, statusDTO.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, reservedSlotId, status);
+    return Objects.hash(id, slotId, status);
   }
 
   @Override
@@ -111,7 +111,7 @@ public class StatusDTO   {
     sb.append("class StatusDTO {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    reservedSlotId: ").append(toIndentedString(reservedSlotId)).append("\n");
+    sb.append("    slotId: ").append(toIndentedString(slotId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();

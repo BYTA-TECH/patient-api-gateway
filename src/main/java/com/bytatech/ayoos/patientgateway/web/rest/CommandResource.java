@@ -17,7 +17,7 @@ import com.bytatech.ayoos.patientgateway.client.appointment.model.AppointmentReq
 import com.bytatech.ayoos.patientgateway.client.appointment.model.PaymentConfirmationRequest;
 import com.bytatech.ayoos.patientgateway.client.appointment.model.ProcessPayment;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.ReviewDTO;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.UserRatingDTO;
+//import com.bytatech.ayoos.patientgateway.client.doctor.model.UserRatingDTO;
 import com.bytatech.ayoos.patientgateway.client.patient.model.Patient;
 import com.bytatech.ayoos.patientgateway.client.patient.model.PatientDTO;
 import com.bytatech.ayoos.patientgateway.client.payment.model.OrderRequest;
@@ -46,11 +46,11 @@ public class CommandResource {
 	@Autowired
 	PaymentCommandService paymentCommandService;
 	
-	@PostMapping("/rating")
-	public ResponseEntity<UserRatingDTO> ratedoctor(@RequestBody UserRatingDTO userRatingDTO) {
-		log.debug("<<<<<< ratedoctor >>>>>>>{}",userRatingDTO);
-		return doctorCommandService.createUserRating(userRatingDTO);
-	}
+//	@PostMapping("/rating")
+//	public ResponseEntity<UserRatingDTO> ratedoctor(@RequestBody UserRatingDTO userRatingDTO) {
+//		log.debug("<<<<<< ratedoctor >>>>>>>{}",userRatingDTO);
+//		return doctorCommandService.createUserRating(userRatingDTO);
+//	}
 	@PostMapping("/review")
 	public ResponseEntity<ReviewDTO> reviewdoctor(@RequestBody ReviewDTO reviewDTO) {
 		log.debug("<<<<<<<<<<< reviewdoctor>>>>>>>>>{}",reviewDTO);
