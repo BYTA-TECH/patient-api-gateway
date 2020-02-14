@@ -96,7 +96,7 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
 	@Override
 	public ResponseEntity<SessionInfo> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date)
 	{
-		QueryBuilder dslQuery=QueryBuilders.boolQuery().must(QueryBuilders.termQuery("workplace.doctor.doctorIdpCode.keyword",doctorIdpCode)).must(QueryBuilders.termQuery("date",date));
+		QueryBuilder dslQuery=QueryBuilders.boolQuery().must(QueryBuilders.termQuery("date",date));
 		SearchSourceBuilder builder = new SearchSourceBuilder();
 		builder.query(dslQuery);
         SearchResponse response = serviceUtility.searchResponseForObject("sessioninfo", dslQuery);
