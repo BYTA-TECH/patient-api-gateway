@@ -1,4 +1,4 @@
-package com.bytatech.ayoos.patientgateway.client.patient.model;
+package undefined.client.patient.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
  * UserDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-18T15:00:19.149+05:30[Asia/Colombo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-18T14:34:25.483+05:30[Asia/Colombo]")
 
 public class UserDTO   {
   @JsonProperty("activated")

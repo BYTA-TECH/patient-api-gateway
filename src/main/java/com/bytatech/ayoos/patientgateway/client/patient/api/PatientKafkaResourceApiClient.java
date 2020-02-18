@@ -4,5 +4,5 @@ import org.springframework.cloud.openfeign.FeignClient;
 import com.bytatech.ayoos.patientgateway.client.patient.ClientConfiguration;
 
 @FeignClient(name="${patient.name:patient}", url="${patient.url:35.209.250.234:8099/}", configuration = ClientConfiguration.class)
-public interface MedicalCaseResourceApiClient extends MedicalCaseResourceApi {
+public interface PatientKafkaResourceApiClient extends PatientKafkaResourceApi {
 }

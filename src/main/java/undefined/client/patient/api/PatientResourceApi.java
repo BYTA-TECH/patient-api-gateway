@@ -3,9 +3,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-package com.bytatech.ayoos.patientgateway.client.patient.api;
+package undefined.client.patient.api;
 
-import com.bytatech.ayoos.patientgateway.client.patient.model.PatientDTO;
+import undefined.client.patient.model.PatientDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-18T15:00:19.149+05:30[Asia/Colombo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-18T14:34:25.483+05:30[Asia/Colombo]")
 
 @Api(value = "PatientResource", description = "the PatientResource API")
 public interface PatientResourceApi {
