@@ -25,12 +25,12 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-28T11:07:58.008+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-18T15:46:22.211+05:30[Asia/Colombo]")
 
 @Api(value = "DmsRecordResource", description = "the DmsRecordResource API")
 public interface DmsRecordResourceApi {
 
-    @ApiOperation(value = "createDMSRecord", nickname = "createDMSRecordUsingPOST1", notes = "", response = DMSRecordDTO.class, tags={ "dms-record-resource", })
+    @ApiOperation(value = "createDMSRecord", nickname = "createDMSRecordUsingPOST", notes = "", response = DMSRecordDTO.class, tags={ "dms-record-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = DMSRecordDTO.class),
         @ApiResponse(code = 201, message = "Created"),
@@ -41,7 +41,7 @@ public interface DmsRecordResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<DMSRecordDTO> createDMSRecordUsingPOST1(@ApiParam(value = "dMSRecordDTO" ,required=true )  @Valid @RequestBody DMSRecordDTO dmSRecordDTO);
+    ResponseEntity<DMSRecordDTO> createDMSRecordUsingPOST(@ApiParam(value = "dMSRecordDTO" ,required=true )  @Valid @RequestBody DMSRecordDTO dmSRecordDTO);
 
 
     @ApiOperation(value = "deleteDMSRecord", nickname = "deleteDMSRecordUsingDELETE", notes = "", tags={ "dms-record-resource", })
@@ -89,18 +89,6 @@ public interface DmsRecordResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<List<DMSRecordDTO>> searchDMSRecordsUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
-
-
-    @ApiOperation(value = "test", nickname = "testUsingGET1", notes = "", response = String.class, tags={ "dms-record-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/dms",
-        produces = "*/*", 
-        method = RequestMethod.GET)
-    ResponseEntity<String> testUsingGET1();
 
 
     @ApiOperation(value = "updateDMSRecord", nickname = "updateDMSRecordUsingPUT", notes = "", response = DMSRecordDTO.class, tags={ "dms-record-resource", })

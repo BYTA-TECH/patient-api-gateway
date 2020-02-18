@@ -25,12 +25,12 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-28T11:07:58.008+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-18T15:46:22.211+05:30[Asia/Colombo]")
 
 @Api(value = "MedicalCaseResource", description = "the MedicalCaseResource API")
 public interface MedicalCaseResourceApi {
 
-    @ApiOperation(value = "createMedicalCase", nickname = "createMedicalCaseUsingPOST1", notes = "", response = MedicalCaseDTO.class, tags={ "medical-case-resource", })
+    @ApiOperation(value = "createMedicalCase", nickname = "createMedicalCaseUsingPOST", notes = "", response = MedicalCaseDTO.class, tags={ "medical-case-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = MedicalCaseDTO.class),
         @ApiResponse(code = 201, message = "Created"),
@@ -41,7 +41,7 @@ public interface MedicalCaseResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<MedicalCaseDTO> createMedicalCaseUsingPOST1(@ApiParam(value = "medicalCaseDTO" ,required=true )  @Valid @RequestBody MedicalCaseDTO medicalCaseDTO);
+    ResponseEntity<MedicalCaseDTO> createMedicalCaseUsingPOST(@ApiParam(value = "medicalCaseDTO" ,required=true )  @Valid @RequestBody MedicalCaseDTO medicalCaseDTO);
 
 
     @ApiOperation(value = "deleteMedicalCase", nickname = "deleteMedicalCaseUsingDELETE", notes = "", tags={ "medical-case-resource", })

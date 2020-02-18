@@ -5,7 +5,6 @@
  */
 package com.bytatech.ayoos.patientgateway.client.patient.api;
 
-import com.bytatech.ayoos.patientgateway.client.patient.model.Patient;
 import com.bytatech.ayoos.patientgateway.client.patient.model.PatientDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -26,12 +25,12 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-28T11:07:58.008+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-18T15:46:22.211+05:30[Asia/Colombo]")
 
 @Api(value = "PatientResource", description = "the PatientResource API")
 public interface PatientResourceApi {
 
-    @ApiOperation(value = "createPatient", nickname = "createPatientUsingPOST1", notes = "", response = PatientDTO.class, tags={ "patient-resource", })
+    @ApiOperation(value = "createPatient", nickname = "createPatientUsingPOST", notes = "", response = PatientDTO.class, tags={ "patient-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = PatientDTO.class),
         @ApiResponse(code = 201, message = "Created"),
@@ -42,7 +41,33 @@ public interface PatientResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.POST)
-    ResponseEntity<PatientDTO> createPatientUsingPOST1(@ApiParam(value = "patientDTO" ,required=true )  @Valid @RequestBody PatientDTO patientDTO);
+    ResponseEntity<PatientDTO> createPatientUsingPOST(@ApiParam(value = "patientDTO" ,required=true )  @Valid @RequestBody PatientDTO patientDTO);
+
+
+    @ApiOperation(value = "createPersonOnDMS", nickname = "createPersonOnDMSUsingPOST", notes = "", tags={ "patient-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK"),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/testpeople",
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<Void> createPersonOnDMSUsingPOST(@ApiParam(value = "patientDTO" ,required=true )  @Valid @RequestBody PatientDTO patientDTO);
+
+
+    @ApiOperation(value = "createSite", nickname = "createSiteUsingPOST", notes = "", response = String.class, tags={ "patient-resource", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = String.class),
+        @ApiResponse(code = 201, message = "Created"),
+        @ApiResponse(code = 401, message = "Unauthorized"),
+        @ApiResponse(code = 403, message = "Forbidden"),
+        @ApiResponse(code = 404, message = "Not Found") })
+    @RequestMapping(value = "/api/testsite/{siteId}",
+        produces = "*/*", 
+        method = RequestMethod.POST)
+    ResponseEntity<String> createSiteUsingPOST(@ApiParam(value = "siteId",required=true) @PathVariable("siteId") String siteId);
 
 
     @ApiOperation(value = "deletePatient", nickname = "deletePatientUsingDELETE", notes = "", tags={ "patient-resource", })
@@ -80,20 +105,6 @@ public interface PatientResourceApi {
     ResponseEntity<PatientDTO> getPatientUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "modelToDto", nickname = "modelToDtoUsingPOST", notes = "", response = PatientDTO.class, tags={ "patient-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = PatientDTO.class),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/patients/modelToDto",
-        produces = "*/*", 
-        consumes = "application/json",
-        method = RequestMethod.POST)
-    ResponseEntity<PatientDTO> modelToDtoUsingPOST(@ApiParam(value = "patient" ,required=true )  @Valid @RequestBody Patient patient);
-
-
     @ApiOperation(value = "searchPatients", nickname = "searchPatientsUsingGET", notes = "", response = PatientDTO.class, responseContainer = "List", tags={ "patient-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = PatientDTO.class, responseContainer = "List"),
@@ -106,7 +117,7 @@ public interface PatientResourceApi {
     ResponseEntity<List<PatientDTO>> searchPatientsUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
-    @ApiOperation(value = "updatePatient", nickname = "updatePatientUsingPUT1", notes = "", response = PatientDTO.class, tags={ "patient-resource", })
+    @ApiOperation(value = "updatePatient", nickname = "updatePatientUsingPUT", notes = "", response = PatientDTO.class, tags={ "patient-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = PatientDTO.class),
         @ApiResponse(code = 201, message = "Created"),
@@ -117,6 +128,6 @@ public interface PatientResourceApi {
         produces = "*/*", 
         consumes = "application/json",
         method = RequestMethod.PUT)
-    ResponseEntity<PatientDTO> updatePatientUsingPUT1(@ApiParam(value = "patientDTO" ,required=true )  @Valid @RequestBody PatientDTO patientDTO);
+    ResponseEntity<PatientDTO> updatePatientUsingPUT(@ApiParam(value = "patientDTO" ,required=true )  @Valid @RequestBody PatientDTO patientDTO);
 
 }

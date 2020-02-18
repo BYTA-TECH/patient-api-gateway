@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
-import java.time.LocalDate;
 import java.util.Date;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
@@ -16,7 +14,7 @@ import javax.validation.constraints.*;
  * PatientDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-10-28T11:07:58.008+05:30[Asia/Kolkata]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-18T15:46:22.211+05:30[Asia/Colombo]")
 
 public class PatientDTO   {
   @JsonProperty("createdDate")
@@ -28,17 +26,17 @@ public class PatientDTO   {
   @JsonProperty("dob")
   private LocalDate dob = null;
 
+  @JsonProperty("emailId")
+  private String emailId = null;
+
   @JsonProperty("id")
   private Long id = null;
 
   @JsonProperty("idpCode")
   private String idpCode = null;
 
-  @JsonProperty("image")
-  private byte[] image = null;
-
-  @JsonProperty("imageContentType")
-  private String imageContentType = null;
+  @JsonProperty("imageLink")
+  private String imageLink = null;
 
   @JsonProperty("location")
   private String location = null;
@@ -108,6 +106,26 @@ public class PatientDTO   {
     this.dob = dob;
   }
 
+  public PatientDTO emailId(String emailId) {
+    this.emailId = emailId;
+    return this;
+  }
+
+  /**
+   * Get emailId
+   * @return emailId
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getEmailId() {
+    return emailId;
+  }
+
+  public void setEmailId(String emailId) {
+    this.emailId = emailId;
+  }
+
   public PatientDTO id(Long id) {
     this.id = id;
     return this;
@@ -148,44 +166,24 @@ public class PatientDTO   {
     this.idpCode = idpCode;
   }
 
-  public PatientDTO image(byte[] image) {
-    this.image = image;
+  public PatientDTO imageLink(String imageLink) {
+    this.imageLink = imageLink;
     return this;
   }
 
   /**
-   * Get image
-   * @return image
-  **/
-  @ApiModelProperty(value = "")
-
-@Pattern(regexp="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$") 
-  public byte[] getImage() {
-    return image;
-  }
-
-  public void setImage(byte[] image) {
-    this.image = image;
-  }
-
-  public PatientDTO imageContentType(String imageContentType) {
-    this.imageContentType = imageContentType;
-    return this;
-  }
-
-  /**
-   * Get imageContentType
-   * @return imageContentType
+   * Get imageLink
+   * @return imageLink
   **/
   @ApiModelProperty(value = "")
 
 
-  public String getImageContentType() {
-    return imageContentType;
+  public String getImageLink() {
+    return imageLink;
   }
 
-  public void setImageContentType(String imageContentType) {
-    this.imageContentType = imageContentType;
+  public void setImageLink(String imageLink) {
+    this.imageLink = imageLink;
   }
 
   public PatientDTO location(String location) {
@@ -241,17 +239,17 @@ public class PatientDTO   {
     return Objects.equals(this.createdDate, patientDTO.createdDate) &&
         Objects.equals(this.dmsId, patientDTO.dmsId) &&
         Objects.equals(this.dob, patientDTO.dob) &&
+        Objects.equals(this.emailId, patientDTO.emailId) &&
         Objects.equals(this.id, patientDTO.id) &&
         Objects.equals(this.idpCode, patientDTO.idpCode) &&
-        Objects.equals(this.image, patientDTO.image) &&
-        Objects.equals(this.imageContentType, patientDTO.imageContentType) &&
+        Objects.equals(this.imageLink, patientDTO.imageLink) &&
         Objects.equals(this.location, patientDTO.location) &&
         Objects.equals(this.phoneNumber, patientDTO.phoneNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdDate, dmsId, dob, id, idpCode, image, imageContentType, location, phoneNumber);
+    return Objects.hash(createdDate, dmsId, dob, emailId, id, idpCode, imageLink, location, phoneNumber);
   }
 
   @Override
@@ -262,10 +260,10 @@ public class PatientDTO   {
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    dmsId: ").append(toIndentedString(dmsId)).append("\n");
     sb.append("    dob: ").append(toIndentedString(dob)).append("\n");
+    sb.append("    emailId: ").append(toIndentedString(emailId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    idpCode: ").append(toIndentedString(idpCode)).append("\n");
-    sb.append("    image: ").append(toIndentedString(image)).append("\n");
-    sb.append("    imageContentType: ").append(toIndentedString(imageContentType)).append("\n");
+    sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("}");
