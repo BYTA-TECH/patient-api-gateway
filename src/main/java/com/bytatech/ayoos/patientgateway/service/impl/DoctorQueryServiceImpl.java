@@ -1,7 +1,10 @@
 package com.bytatech.ayoos.patientgateway.service.impl;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,16 +23,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.bytatech.ayoos.patientgateway.client.doctor.api.DoctorResourceApi;
-import com.bytatech.ayoos.patientgateway.client.doctor.api.ReviewResourceApi;
-//import com.bytatech.ayoos.patientgateway.client.doctor.api.UserRatingResourceApi;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Qualification;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.ReviewDTO;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.SessionInfo;
-//import com.bytatech.ayoos.patientgateway.client.doctor.model.UserRatingDTO;
-import com.bytatech.ayoos.patientgateway.service.*;
-import com.bytatech.ayoos.patientgateway.config.*;
+import com.bytatech.ayoos.patientgateway.config.ServiceUtility;
+import com.bytatech.ayoos.patientgateway.service.DoctorQueryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
@@ -94,14 +92,36 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
 
 
 	@Override
-	public ResponseEntity<SessionInfo> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date)
+	public ResponseEntity<List<SessionInfo>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date)
 	{
 		QueryBuilder dslQuery=QueryBuilders.boolQuery().must(QueryBuilders.termQuery("date",date));
 		SearchSourceBuilder builder = new SearchSourceBuilder();
 		builder.query(dslQuery);
         SearchResponse response = serviceUtility.searchResponseForObject("sessioninfo", dslQuery);
+        
+        SessionInfo sessionInfo= serviceUtility.getObjectResult(response, new SessionInfo());
+        long interval=sessionInfo.getInterval();
+        OffsetDateTime fromTime=sessionInfo.getFromTime();
+        OffsetDateTime toTime=sessionInfo.getToTime();
+      
+        List <SessionInfo>sessionList =new ArrayList<> ();
+        do {
+        	 
+        	fromTime=sessionInfo.getFromTime();
+        	SessionInfo s=new SessionInfo();
+        	s.setDate(sessionInfo.getDate());
+        	s.setFromTime(fromTime);
+          
+		 
+        	s.setToTime(fromTime.plusMinutes(interval));
+        	sessionInfo.setFromTime(s.getToTime());
+        	sessionList.add(s);
+        } while(fromTime.isAfter(toTime));
+         
+       
+       
+       return ResponseEntity.ok().body(sessionList);
 		
-		return ResponseEntity.ok().body(serviceUtility.getObjectResult(response, new SessionInfo()));
 
 	}
 	

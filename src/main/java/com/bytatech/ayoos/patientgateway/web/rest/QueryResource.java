@@ -48,14 +48,14 @@ public class QueryResource {
 		log.debug("<<<<<<<< findAllQualification >>>>>>>>");
 		return doctorQueryService.findAllQualifications(pageable);
 	}
-	@GetMapping("/doctors/{doctorId}")
+	@GetMapping("/doctors/{doctorIdpCode}")
 	public ResponseEntity<Doctor> findDoctorByDoctorIdpCode(@PathVariable String doctorIdpCode) {
 		log.debug("<<<<<<<<<<< findDoctorByDoctorId >>>>>>>>>>{}",doctorIdpCode);
 		return doctorQueryService.findDoctorByDoctorIdpCode(doctorIdpCode);
 	}
 	
 	@GetMapping("/findSessionInfoByDoctorIdpCodeAndDate/{doctorIdpCode}/{date}")
-	public ResponseEntity<SessionInfo>  findSessionInfoByDoctorIdpCodeAndDate(@PathVariable String doctorIdpCode,@PathVariable LocalDate date)
+	public ResponseEntity<List<SessionInfo>>  findSessionInfoByDoctorIdpCodeAndDate(@PathVariable String doctorIdpCode,@PathVariable LocalDate date)
 	{
 		return doctorQueryService.findSessionInfoByDoctorIdpCodeAndDate(doctorIdpCode,date);
 	}
