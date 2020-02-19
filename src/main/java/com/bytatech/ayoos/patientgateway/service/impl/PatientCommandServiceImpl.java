@@ -28,12 +28,12 @@ public class PatientCommandServiceImpl implements PatientCommandService{
 	@Override
 	public ResponseEntity<PatientDTO> createPatient(PatientDTO patientDTO) {
 		log.debug("<<<<<<<<createPatient >>>>>>>{}",patientDTO);
-		return patientResourceApi.createPatientUsingPOST1(patientDTO);
+		return patientResourceApi.createPatientUsingPOST(patientDTO);
 	}
 	@Override
 	public ResponseEntity<PatientDTO> updatePatient(PatientDTO patientDTO) {
 		log.debug("<<<<<<<< updatePatient >>>>>>>{}",patientDTO);
-		return patientResourceApi.updatePatientUsingPUT1(patientDTO);
+		return patientResourceApi.updatePatientUsingPUT(patientDTO);
 	}
 	
 	
