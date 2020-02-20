@@ -75,7 +75,7 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
 	public ResponseEntity<Doctor> findDoctorByDoctorIdpCode(String doctorIdpCode) {
 		log.debug("<<<<<<<<<<<< findDoctorByDoctorId>>>>>>>>{}",doctorIdpCode);
 		
-		QueryBuilder dslQuery = QueryBuilders.termQuery("doctorId", doctorIdpCode);
+		QueryBuilder dslQuery = QueryBuilders.termQuery("doctorIdpCode", doctorIdpCode);
 		SearchSourceBuilder builder = new SearchSourceBuilder();
 		builder.query(dslQuery);
 		SearchResponse response = serviceUtility.searchResponseForObject("doctor", dslQuery);
