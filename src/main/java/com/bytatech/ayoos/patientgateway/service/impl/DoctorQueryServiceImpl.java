@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Qualification;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.SessionInfo;
+import com.bytatech.ayoos.patientgateway.client.doctor.model.Slot;
 import com.bytatech.ayoos.patientgateway.config.ServiceUtility;
 import com.bytatech.ayoos.patientgateway.service.DoctorQueryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,7 +44,7 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
 	
 	@Autowired
 	ServiceUtility serviceUtility;
-	
+	 
 	
 	@Override
 	public ResponseEntity<List<Doctor>> findAllDoctors(Pageable pageable) {
@@ -95,36 +96,32 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
  * method to divide the session to slot according to interval 
  */
 	@Override
-	public ResponseEntity<List<SessionInfo>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date)
+	public ResponseEntity<List<Slot>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date)
 	{
 		QueryBuilder dslQuery=QueryBuilders.boolQuery().must(QueryBuilders.termQuery("date",date));
 		SearchSourceBuilder builder = new SearchSourceBuilder();
 		builder.query(dslQuery);
         SearchResponse response = serviceUtility.searchResponseForObject("sessioninfo", dslQuery);
-        
         SessionInfo sessionInfo= serviceUtility.getObjectResult(response, new SessionInfo());
        
         OffsetDateTime fromTime=sessionInfo.getFromTime();
         OffsetDateTime toTime=sessionInfo.getToTime();
       
-        List <SessionInfo>sessionList =new ArrayList<> ();
-        log.debug("---------->"+fromTime+"&"+toTime+"&"+fromTime.isBefore(toTime));
+        List <Slot>slotList =new ArrayList<> (); 
         while(fromTime.isBefore(toTime)){
-        	 long interval=sessionInfo.getInterval();
-        	
-        	SessionInfo s=new SessionInfo();
+        	long interval=sessionInfo.getInterval();
+        	Slot s=new Slot();
         	s.setDate(sessionInfo.getDate());
         	s.setFromTime(fromTime); 
             s.setToTime(fromTime.plusMinutes(interval));
         	sessionInfo.setFromTime(s.getToTime());
         	if(((s.getToTime()).isBefore(toTime))||((s.getToTime()).isEqual(toTime)))
-        	sessionList.add(s);
-        	fromTime=sessionInfo.getFromTime();
-        	log.debug("##########################"+fromTime.isBefore(toTime));
+        		slotList.add(s);
+        	fromTime=sessionInfo.getFromTime(); 
         }  
        
          
-       return ResponseEntity.ok().body(sessionList);
+       return ResponseEntity.ok().body(slotList);
 		
 
 	}

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.ReviewDTO;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.SessionInfo;
+import com.bytatech.ayoos.patientgateway.client.doctor.model.Slot;
 
 
 public interface DoctorQueryService {
@@ -18,6 +19,6 @@ public interface DoctorQueryService {
 	ResponseEntity<Doctor> findDoctorByDoctorIdpCode(String doctorIdpCode);
 	public List<String> findAllQualifications(Pageable pageable) ;
 
-	ResponseEntity<List<SessionInfo>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date);
+	ResponseEntity<List<Slot>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date);
 
 }
