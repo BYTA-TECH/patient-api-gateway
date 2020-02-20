@@ -103,11 +103,12 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
 		builder.query(dslQuery);
         SearchResponse response = serviceUtility.searchResponseForObject("sessioninfo", dslQuery);
         SessionInfo sessionInfo= serviceUtility.getObjectResult(response, new SessionInfo());
-       
+  
         OffsetDateTime fromTime=sessionInfo.getFromTime();
         OffsetDateTime toTime=sessionInfo.getToTime();
-      
+       
         List <Slot>slotList =new ArrayList<> (); 
+ 
         while(fromTime.isBefore(toTime)){
         	long interval=sessionInfo.getInterval();
         	Slot s=new Slot();
@@ -119,9 +120,9 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
         		slotList.add(s);
         	fromTime=sessionInfo.getFromTime(); 
         }  
-       
-         
+        
        return ResponseEntity.ok().body(slotList);
+ 
 		
 
 	}
