@@ -90,7 +90,10 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
 		return serviceUtility.getListResult(response, pageable, new Qualification());
 	}
 
-
+/*
+ * @author:ajay.e.s
+ * method to divide the session to slot according to interval 
+ */
 	@Override
 	public ResponseEntity<List<SessionInfo>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date)
 	{
@@ -100,26 +103,29 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
         SearchResponse response = serviceUtility.searchResponseForObject("sessioninfo", dslQuery);
         
         SessionInfo sessionInfo= serviceUtility.getObjectResult(response, new SessionInfo());
-        long interval=sessionInfo.getInterval();
+  
         OffsetDateTime fromTime=sessionInfo.getFromTime();
         OffsetDateTime toTime=sessionInfo.getToTime();
       
         List <SessionInfo>sessionList =new ArrayList<> ();
-        do {
-        	 
-        	fromTime=sessionInfo.getFromTime();
+ 
+        log.debug("---------->"+fromTime+"&"+toTime+"&"+fromTime.isBefore(toTime));
+        while(fromTime.isBefore(toTime)){
+        	 long interval=sessionInfo.getInterval();
+        	
         	SessionInfo s=new SessionInfo();
         	s.setDate(sessionInfo.getDate());
-        	s.setFromTime(fromTime);
-          
-		 
-        	s.setToTime(fromTime.plusMinutes(interval));
+        	s.setFromTime(fromTime); 
+            s.setToTime(fromTime.plusMinutes(interval));
         	sessionInfo.setFromTime(s.getToTime());
+        	if(((s.getToTime()).isBefore(toTime))||((s.getToTime()).isEqual(toTime)))
         	sessionList.add(s);
-        } while(fromTime.isAfter(toTime));
+        	fromTime=sessionInfo.getFromTime();
+        	log.debug("##########################"+fromTime.isBefore(toTime));
+        }  
+       
          
-       
-       
+ 
        return ResponseEntity.ok().body(sessionList);
 		
 
