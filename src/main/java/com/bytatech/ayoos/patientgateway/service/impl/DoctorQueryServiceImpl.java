@@ -107,21 +107,26 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
         Instant fromTime=sessionInfo.getFromTime();
         Instant toTime=sessionInfo.getToTime();
        
-        List <SessionInfo>slotList =new ArrayList<> (); 
+        List <SessionInfo> sessionList =new ArrayList<> (); 
  
         while(fromTime.isBefore(toTime)){
         	long interval=sessionInfo.getInterval();
         	SessionInfo s=new SessionInfo();
         	s.setDate(sessionInfo.getDate());
         	s.setFromTime(fromTime); 
+        	s.setDoctorIdpCode(sessionInfo.getDoctorIdpCode());
+        	s.setStatus(sessionInfo.getStatus());
+        	s.setWeekDay(sessionInfo.getWeekDay());
+        	s.setWorkPlace(sessionInfo.getWorkPlace());
+        	s.setInterval(sessionInfo.getInterval());
             s.setToTime(fromTime.plus(interval,ChronoUnit.MINUTES));
         	sessionInfo.setFromTime(s.getToTime());
         	if(((s.getToTime()).isBefore(toTime))||((s.getToTime()).equals(toTime)))
-        		slotList.add(s);
+        		sessionList.add(s);
         	fromTime=sessionInfo.getFromTime(); 
         }  
         
-       return ResponseEntity.ok().body(slotList);
+       return ResponseEntity.ok().body(sessionList);
  
 		
 
