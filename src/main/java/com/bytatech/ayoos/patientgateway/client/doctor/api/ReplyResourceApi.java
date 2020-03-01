@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T12:19:39.021+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-01T12:30:42.439+05:30[Asia/Colombo]")
 
 @Api(value = "ReplyResource", description = "the ReplyResource API")
 public interface ReplyResourceApi {
@@ -77,18 +77,6 @@ public interface ReplyResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<ReplyDTO> getReplyUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
-
-
-    @ApiOperation(value = "searchReplies", nickname = "searchRepliesUsingGET", notes = "", response = ReplyDTO.class, responseContainer = "List", tags={ "reply-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = ReplyDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/_search/replies",
-        produces = "*/*", 
-        method = RequestMethod.GET)
-    ResponseEntity<List<ReplyDTO>> searchRepliesUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
     @ApiOperation(value = "updateReply", nickname = "updateReplyUsingPUT", notes = "", response = ReplyDTO.class, tags={ "reply-resource", })

@@ -1,20 +1,21 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
+ 
+ 
+import java.io.Serializable;
+
 /**
  * A Status.
  */
-
-public class Status {
+ 
+public class Status implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-   
+  
     private Long id;
-
-
+ 
     private String status;
-
-    private Slot slot;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -36,19 +37,6 @@ public class Status {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public Slot getSlot() {
-        return slot;
-    }
-
-    public Status slot(Slot slot) {
-        this.slot = slot;
-        return this;
-    }
-
-    public void setSlot(Slot slot) {
-        this.slot = slot;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

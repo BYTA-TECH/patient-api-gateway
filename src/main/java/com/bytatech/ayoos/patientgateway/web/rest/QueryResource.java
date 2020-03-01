@@ -1,6 +1,6 @@
 package com.bytatech.ayoos.patientgateway.web.rest;
 
-import java.time.LocalDate;
+import java.time.LocalDate; 
 import java.util.List;
 import java.util.Optional;
 
@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.SessionInfo;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.Slot;
+import com.bytatech.ayoos.patientgateway.client.doctor.model.SessionInfo; 
 import com.bytatech.ayoos.patientgateway.client.patient.model.Patient;
 import com.bytatech.ayoos.patientgateway.service.*;
 
@@ -56,7 +55,7 @@ public class QueryResource {
 	}
 	
 	@GetMapping("/findSessionInfoByDoctorIdpCodeAndDate/{doctorIdpCode}/{date}")
-	public ResponseEntity<List<Slot>>  findSessionInfoByDoctorIdpCodeAndDate(@PathVariable String doctorIdpCode,@PathVariable LocalDate date)
+	public ResponseEntity<List<SessionInfo>>  findSessionInfoByDoctorIdpCodeAndDate(@PathVariable String doctorIdpCode,@PathVariable LocalDate date)
 	{
 		return doctorQueryService.findSessionInfoByDoctorIdpCodeAndDate(doctorIdpCode,date);
 	}

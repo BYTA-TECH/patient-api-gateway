@@ -5,9 +5,6 @@
  */
 package com.bytatech.ayoos.patientgateway.client.doctor.api;
 
-import java.util.List;
-
-import com.bytatech.ayoos.patientgateway.client.doctor.model.Qualification;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.QualificationDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -28,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T12:19:39.021+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-01T12:30:42.439+05:30[Asia/Colombo]")
 
 @Api(value = "QualificationResource", description = "the QualificationResource API")
 public interface QualificationResourceApi {
@@ -58,18 +55,6 @@ public interface QualificationResourceApi {
     ResponseEntity<Void> deleteQualificationUsingDELETE(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "findAllQualificationByDoctorId", nickname = "findAllQualificationByDoctorIdUsingGET", notes = "", response = QualificationDTO.class, responseContainer = "List", tags={ "qualification-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = QualificationDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/findAllQualificationByDoctorId/{doctorId}",
-        produces = "*/*", 
-        method = RequestMethod.GET)
-    ResponseEntity<List<QualificationDTO>> findAllQualificationByDoctorIdUsingGET(@ApiParam(value = "doctorId",required=true) @PathVariable("doctorId") Long doctorId);
-
-
     @ApiOperation(value = "getAllQualifications", nickname = "getAllQualificationsUsingGET", notes = "", response = QualificationDTO.class, responseContainer = "List", tags={ "qualification-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = QualificationDTO.class, responseContainer = "List"),
@@ -92,32 +77,6 @@ public interface QualificationResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<QualificationDTO> getQualificationUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
-
-
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST3", notes = "", response = QualificationDTO.class, responseContainer = "List", tags={ "qualification-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = QualificationDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/qualifications/toDto",
-        produces = "*/*", 
-        consumes = "application/json",
-        method = RequestMethod.POST)
-    ResponseEntity<List<QualificationDTO>> listToDtoUsingPOST3(@ApiParam(value = "qualification" ,required=true )  @Valid @RequestBody List<Qualification> qualification);
-
-
-    @ApiOperation(value = "searchQualifications", nickname = "searchQualificationsUsingGET", notes = "", response = QualificationDTO.class, responseContainer = "List", tags={ "qualification-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = QualificationDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/_search/qualifications",
-        produces = "*/*", 
-        method = RequestMethod.GET)
-    ResponseEntity<List<QualificationDTO>> searchQualificationsUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
     @ApiOperation(value = "updateQualification", nickname = "updateQualificationUsingPUT", notes = "", response = QualificationDTO.class, tags={ "qualification-resource", })

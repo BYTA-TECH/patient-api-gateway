@@ -14,17 +14,17 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * SessionInfoDTO
+ * TimingDetailDTO
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-01T12:30:42.439+05:30[Asia/Colombo]")
 
-public class SessionInfoDTO   {
-  @JsonProperty("date")
-  private LocalDate date = null;
-
+public class TimingDetailDTO   {
   @JsonProperty("doctorIdpCode")
   private String doctorIdpCode = null;
+
+  @JsonProperty("fromDate")
+  private LocalDate fromDate = null;
 
   @JsonProperty("fromTime")
   private OffsetDateTime fromTime = null;
@@ -35,43 +35,19 @@ public class SessionInfoDTO   {
   @JsonProperty("interval")
   private Long interval = null;
 
-  @JsonProperty("sessionName")
-  private String sessionName = null;
-
-  @JsonProperty("statusId")
-  private Long statusId = null;
+  @JsonProperty("toDate")
+  private LocalDate toDate = null;
 
   @JsonProperty("toTime")
   private OffsetDateTime toTime = null;
 
-  @JsonProperty("weekDay")
-  private Long weekDay = null;
+  @JsonProperty("weekday")
+  private Long weekday = null;
 
   @JsonProperty("workPlaceId")
   private Long workPlaceId = null;
 
-  public SessionInfoDTO date(LocalDate date) {
-    this.date = date;
-    return this;
-  }
-
-  /**
-   * Get date
-   * @return date
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public LocalDate getDate() {
-    return date;
-  }
-
-  public void setDate(LocalDate date) {
-    this.date = date;
-  }
-
-  public SessionInfoDTO doctorIdpCode(String doctorIdpCode) {
+  public TimingDetailDTO doctorIdpCode(String doctorIdpCode) {
     this.doctorIdpCode = doctorIdpCode;
     return this;
   }
@@ -91,7 +67,28 @@ public class SessionInfoDTO   {
     this.doctorIdpCode = doctorIdpCode;
   }
 
-  public SessionInfoDTO fromTime(OffsetDateTime fromTime) {
+  public TimingDetailDTO fromDate(LocalDate fromDate) {
+    this.fromDate = fromDate;
+    return this;
+  }
+
+  /**
+   * Get fromDate
+   * @return fromDate
+  **/
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public LocalDate getFromDate() {
+    return fromDate;
+  }
+
+  public void setFromDate(LocalDate fromDate) {
+    this.fromDate = fromDate;
+  }
+
+  public TimingDetailDTO fromTime(OffsetDateTime fromTime) {
     this.fromTime = fromTime;
     return this;
   }
@@ -112,7 +109,7 @@ public class SessionInfoDTO   {
     this.fromTime = fromTime;
   }
 
-  public SessionInfoDTO id(Long id) {
+  public TimingDetailDTO id(Long id) {
     this.id = id;
     return this;
   }
@@ -132,7 +129,7 @@ public class SessionInfoDTO   {
     this.id = id;
   }
 
-  public SessionInfoDTO interval(Long interval) {
+  public TimingDetailDTO interval(Long interval) {
     this.interval = interval;
     return this;
   }
@@ -152,47 +149,28 @@ public class SessionInfoDTO   {
     this.interval = interval;
   }
 
-  public SessionInfoDTO sessionName(String sessionName) {
-    this.sessionName = sessionName;
+  public TimingDetailDTO toDate(LocalDate toDate) {
+    this.toDate = toDate;
     return this;
   }
 
   /**
-   * Get sessionName
-   * @return sessionName
+   * Get toDate
+   * @return toDate
   **/
   @ApiModelProperty(value = "")
 
+  @Valid
 
-  public String getSessionName() {
-    return sessionName;
+  public LocalDate getToDate() {
+    return toDate;
   }
 
-  public void setSessionName(String sessionName) {
-    this.sessionName = sessionName;
+  public void setToDate(LocalDate toDate) {
+    this.toDate = toDate;
   }
 
-  public SessionInfoDTO statusId(Long statusId) {
-    this.statusId = statusId;
-    return this;
-  }
-
-  /**
-   * Get statusId
-   * @return statusId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getStatusId() {
-    return statusId;
-  }
-
-  public void setStatusId(Long statusId) {
-    this.statusId = statusId;
-  }
-
-  public SessionInfoDTO toTime(OffsetDateTime toTime) {
+  public TimingDetailDTO toTime(OffsetDateTime toTime) {
     this.toTime = toTime;
     return this;
   }
@@ -213,27 +191,27 @@ public class SessionInfoDTO   {
     this.toTime = toTime;
   }
 
-  public SessionInfoDTO weekDay(Long weekDay) {
-    this.weekDay = weekDay;
+  public TimingDetailDTO weekday(Long weekday) {
+    this.weekday = weekday;
     return this;
   }
 
   /**
-   * Get weekDay
-   * @return weekDay
+   * Get weekday
+   * @return weekday
   **/
   @ApiModelProperty(value = "")
 
 
-  public Long getWeekDay() {
-    return weekDay;
+  public Long getWeekday() {
+    return weekday;
   }
 
-  public void setWeekDay(Long weekDay) {
-    this.weekDay = weekDay;
+  public void setWeekday(Long weekday) {
+    this.weekday = weekday;
   }
 
-  public SessionInfoDTO workPlaceId(Long workPlaceId) {
+  public TimingDetailDTO workPlaceId(Long workPlaceId) {
     this.workPlaceId = workPlaceId;
     return this;
   }
@@ -262,38 +240,36 @@ public class SessionInfoDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SessionInfoDTO sessionInfoDTO = (SessionInfoDTO) o;
-    return Objects.equals(this.date, sessionInfoDTO.date) &&
-        Objects.equals(this.doctorIdpCode, sessionInfoDTO.doctorIdpCode) &&
-        Objects.equals(this.fromTime, sessionInfoDTO.fromTime) &&
-        Objects.equals(this.id, sessionInfoDTO.id) &&
-        Objects.equals(this.interval, sessionInfoDTO.interval) &&
-        Objects.equals(this.sessionName, sessionInfoDTO.sessionName) &&
-        Objects.equals(this.statusId, sessionInfoDTO.statusId) &&
-        Objects.equals(this.toTime, sessionInfoDTO.toTime) &&
-        Objects.equals(this.weekDay, sessionInfoDTO.weekDay) &&
-        Objects.equals(this.workPlaceId, sessionInfoDTO.workPlaceId);
+    TimingDetailDTO timingDetailDTO = (TimingDetailDTO) o;
+    return Objects.equals(this.doctorIdpCode, timingDetailDTO.doctorIdpCode) &&
+        Objects.equals(this.fromDate, timingDetailDTO.fromDate) &&
+        Objects.equals(this.fromTime, timingDetailDTO.fromTime) &&
+        Objects.equals(this.id, timingDetailDTO.id) &&
+        Objects.equals(this.interval, timingDetailDTO.interval) &&
+        Objects.equals(this.toDate, timingDetailDTO.toDate) &&
+        Objects.equals(this.toTime, timingDetailDTO.toTime) &&
+        Objects.equals(this.weekday, timingDetailDTO.weekday) &&
+        Objects.equals(this.workPlaceId, timingDetailDTO.workPlaceId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, doctorIdpCode, fromTime, id, interval, sessionName, statusId, toTime, weekDay, workPlaceId);
+    return Objects.hash(doctorIdpCode, fromDate, fromTime, id, interval, toDate, toTime, weekday, workPlaceId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SessionInfoDTO {\n");
+    sb.append("class TimingDetailDTO {\n");
     
-    sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    doctorIdpCode: ").append(toIndentedString(doctorIdpCode)).append("\n");
+    sb.append("    fromDate: ").append(toIndentedString(fromDate)).append("\n");
     sb.append("    fromTime: ").append(toIndentedString(fromTime)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
-    sb.append("    sessionName: ").append(toIndentedString(sessionName)).append("\n");
-    sb.append("    statusId: ").append(toIndentedString(statusId)).append("\n");
+    sb.append("    toDate: ").append(toIndentedString(toDate)).append("\n");
     sb.append("    toTime: ").append(toIndentedString(toTime)).append("\n");
-    sb.append("    weekDay: ").append(toIndentedString(weekDay)).append("\n");
+    sb.append("    weekday: ").append(toIndentedString(weekday)).append("\n");
     sb.append("    workPlaceId: ").append(toIndentedString(workPlaceId)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,6 +1,6 @@
 package com.bytatech.ayoos.patientgateway.web.rest;
 
-import org.slf4j.Logger;
+import org.slf4j.Logger; 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ import com.bytatech.ayoos.patientgateway.client.appointment.model.AppointmentCon
 import com.bytatech.ayoos.patientgateway.client.appointment.model.AppointmentRequest;
 import com.bytatech.ayoos.patientgateway.client.appointment.model.PaymentConfirmationRequest;
 import com.bytatech.ayoos.patientgateway.client.appointment.model.ProcessPayment;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.ReviewDTO;
+//import com.bytatech.ayoos.patientgateway.client.doctor.model.ReviewDTO;
 //import com.bytatech.ayoos.patientgateway.client.doctor.model.UserRatingDTO;
 import com.bytatech.ayoos.patientgateway.client.patient.model.Patient;
 import com.bytatech.ayoos.patientgateway.client.patient.model.PatientDTO;
@@ -51,11 +51,11 @@ public class CommandResource {
 //		log.debug("<<<<<< ratedoctor >>>>>>>{}",userRatingDTO);
 //		return doctorCommandService.createUserRating(userRatingDTO);
 //	}
-	@PostMapping("/review")
-	public ResponseEntity<ReviewDTO> reviewdoctor(@RequestBody ReviewDTO reviewDTO) {
-		log.debug("<<<<<<<<<<< reviewdoctor>>>>>>>>>{}",reviewDTO);
-		return doctorCommandService.createReview(reviewDTO);
-	}
+//	@PostMapping("/review")
+//	public ResponseEntity<ReviewDTO> reviewdoctor(@RequestBody ReviewDTO reviewDTO) {
+//		log.debug("<<<<<<<<<<< reviewdoctor>>>>>>>>>{}",reviewDTO);
+//		return doctorCommandService.createReview(reviewDTO);
+//	}
 	@PostMapping("/patient")
 	public ResponseEntity<PatientDTO> createPatient(@RequestBody PatientDTO patientDTO) {
 		log.debug("<<<<<<<<< createPatient >>>>>>>>{}",patientDTO);

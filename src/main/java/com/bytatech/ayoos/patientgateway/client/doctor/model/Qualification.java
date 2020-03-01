@@ -1,135 +1,77 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
-import java.util.Objects;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
-//import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import java.io.Serializable;
 
 /**
- * Qualification
- */
-@Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T12:19:39.021+05:30[Asia/Calcutta]")
-//@Document(indexName="qualification")
-public class Qualification   {
-  @JsonProperty("doctor")
-  private Doctor doctor = null;
+ * A Qualification.
+ */ 
+public class Qualification implements Serializable {
 
-  @JsonProperty("id")
-  private Long id = null;
+    private static final long serialVersionUID = 1L;
+ 
+    private Long id;
+ 
+    private String qualification; 
+    private Doctor doctor;
 
-  @JsonProperty("qualification")
-  private String qualification = null;
-
-  public Qualification doctor(Doctor doctor) {
-    this.doctor = doctor;
-    return this;
-  }
-
-  /**
-   * Get doctor
-   * @return doctor
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public Doctor getDoctor() {
-    return doctor;
-  }
-
-  public void setDoctor(Doctor doctor) {
-    this.doctor = doctor;
-  }
-
-  public Qualification id(Long id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Qualification qualification(String qualification) {
-    this.qualification = qualification;
-    return this;
-  }
-
-  /**
-   * Get qualification
-   * @return qualification
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getQualification() {
-    return qualification;
-  }
-
-  public void setQualification(String qualification) {
-    this.qualification = qualification;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public Long getId() {
+        return id;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public void setId(Long id) {
+        this.id = id;
     }
-    Qualification qualification = (Qualification) o;
-    return Objects.equals(this.doctor, qualification.doctor) &&
-        Objects.equals(this.id, qualification.id) &&
-        Objects.equals(this.qualification, qualification.qualification);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(doctor, id, qualification);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Qualification {\n");
-    
-    sb.append("    doctor: ").append(toIndentedString(doctor)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    qualification: ").append(toIndentedString(qualification)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public String getQualification() {
+        return qualification;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public Qualification qualification(String qualification) {
+        this.qualification = qualification;
+        return this;
+    }
+
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public Qualification doctor(Doctor doctor) {
+        this.doctor = doctor;
+        return this;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Qualification)) {
+            return false;
+        }
+        return id != null && id.equals(((Qualification) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    @Override
+    public String toString() {
+        return "Qualification{" +
+            "id=" + getId() +
+            ", qualification='" + getQualification() + "'" +
+            "}";
+    }
 }
-

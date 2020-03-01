@@ -5,9 +5,7 @@
  */
 package com.bytatech.ayoos.patientgateway.client.doctor.api;
 
-import com.bytatech.ayoos.patientgateway.client.doctor.model.ContactInfo;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.ContactInfoDTO;
-import java.util.List;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T12:19:39.021+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-01T12:30:42.439+05:30[Asia/Colombo]")
 
 @Api(value = "ContactInfoResource", description = "the ContactInfoResource API")
 public interface ContactInfoResourceApi {
@@ -79,34 +77,6 @@ public interface ContactInfoResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<ContactInfoDTO> getContactInfoUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
-
-
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST", notes = "", response = ContactInfoDTO.class, responseContainer = "List", tags={ "contact-info-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = ContactInfoDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/contact-infos/toDto",
-        produces = "*/*", 
-        consumes = "application/json",
-        method = RequestMethod.POST)
-    ResponseEntity<List<ContactInfoDTO>> listToDtoUsingPOST(@ApiParam(value = "contactInfo" ,required=true )  @Valid @RequestBody List<ContactInfo> contactInfo);
-
-
-    @ApiOperation(value = "modelToDto", nickname = "modelToDtoUsingPOST", notes = "", response = ContactInfoDTO.class, tags={ "contact-info-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = ContactInfoDTO.class),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/contact-infos/modelToDto",
-        produces = "*/*", 
-        consumes = "application/json",
-        method = RequestMethod.POST)
-    ResponseEntity<ContactInfoDTO> modelToDtoUsingPOST(@ApiParam(value = "contactInfo" ,required=true )  @Valid @RequestBody ContactInfo contactInfo);
 
 
     @ApiOperation(value = "searchContactInfos", nickname = "searchContactInfosUsingGET", notes = "", response = ContactInfoDTO.class, responseContainer = "List", tags={ "contact-info-resource", })

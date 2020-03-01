@@ -1,10 +1,11 @@
 package com.bytatech.ayoos.patientgateway.service.impl;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +26,7 @@ import org.springframework.stereotype.Service;
 
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Qualification;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.SessionInfo;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.Slot;
+import com.bytatech.ayoos.patientgateway.client.doctor.model.SessionInfo; 
 import com.bytatech.ayoos.patientgateway.config.ServiceUtility;
 import com.bytatech.ayoos.patientgateway.service.DoctorQueryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -96,7 +96,7 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
  * method to divide the session to slot according to interval 
  */
 	@Override
-	public ResponseEntity<List<Slot>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date)
+	public ResponseEntity<List<SessionInfo>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date)
 	{
 		QueryBuilder dslQuery=QueryBuilders.boolQuery().must(QueryBuilders.termQuery("date",date));
 		SearchSourceBuilder builder = new SearchSourceBuilder();
@@ -104,19 +104,19 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
         SearchResponse response = serviceUtility.searchResponseForObject("sessioninfo", dslQuery);
         SessionInfo sessionInfo= serviceUtility.getObjectResult(response, new SessionInfo());
   
-        OffsetDateTime fromTime=sessionInfo.getFromTime();
-        OffsetDateTime toTime=sessionInfo.getToTime();
+        Instant fromTime=sessionInfo.getFromTime();
+        Instant toTime=sessionInfo.getToTime();
        
-        List <Slot>slotList =new ArrayList<> (); 
+        List <SessionInfo>slotList =new ArrayList<> (); 
  
         while(fromTime.isBefore(toTime)){
         	long interval=sessionInfo.getInterval();
-        	Slot s=new Slot();
+        	SessionInfo s=new SessionInfo();
         	s.setDate(sessionInfo.getDate());
         	s.setFromTime(fromTime); 
-            s.setToTime(fromTime.plusMinutes(interval));
+            s.setToTime(fromTime.plus(interval,ChronoUnit.MINUTES));
         	sessionInfo.setFromTime(s.getToTime());
-        	if(((s.getToTime()).isBefore(toTime))||((s.getToTime()).isEqual(toTime)))
+        	if(((s.getToTime()).isBefore(toTime))||((s.getToTime()).equals(toTime)))
         		slotList.add(s);
         	fromTime=sessionInfo.getFromTime(); 
         }  

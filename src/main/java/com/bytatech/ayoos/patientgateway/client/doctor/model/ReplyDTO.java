@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * ReplyDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T12:19:39.021+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-01T12:30:42.439+05:30[Asia/Colombo]")
 
 public class ReplyDTO   {
   @JsonProperty("id")
@@ -22,8 +22,8 @@ public class ReplyDTO   {
   @JsonProperty("reply")
   private String reply = null;
 
-  @JsonProperty("reviewId")
-  private Long reviewId = null;
+  @JsonProperty("userRatingReviewId")
+  private Long userRatingReviewId = null;
 
   public ReplyDTO id(Long id) {
     this.id = id;
@@ -65,24 +65,24 @@ public class ReplyDTO   {
     this.reply = reply;
   }
 
-  public ReplyDTO reviewId(Long reviewId) {
-    this.reviewId = reviewId;
+  public ReplyDTO userRatingReviewId(Long userRatingReviewId) {
+    this.userRatingReviewId = userRatingReviewId;
     return this;
   }
 
   /**
-   * Get reviewId
-   * @return reviewId
+   * Get userRatingReviewId
+   * @return userRatingReviewId
   **/
   @ApiModelProperty(value = "")
 
 
-  public Long getReviewId() {
-    return reviewId;
+  public Long getUserRatingReviewId() {
+    return userRatingReviewId;
   }
 
-  public void setReviewId(Long reviewId) {
-    this.reviewId = reviewId;
+  public void setUserRatingReviewId(Long userRatingReviewId) {
+    this.userRatingReviewId = userRatingReviewId;
   }
 
 
@@ -97,12 +97,12 @@ public class ReplyDTO   {
     ReplyDTO replyDTO = (ReplyDTO) o;
     return Objects.equals(this.id, replyDTO.id) &&
         Objects.equals(this.reply, replyDTO.reply) &&
-        Objects.equals(this.reviewId, replyDTO.reviewId);
+        Objects.equals(this.userRatingReviewId, replyDTO.userRatingReviewId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, reply, reviewId);
+    return Objects.hash(id, reply, userRatingReviewId);
   }
 
   @Override
@@ -112,7 +112,7 @@ public class ReplyDTO   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    reply: ").append(toIndentedString(reply)).append("\n");
-    sb.append("    reviewId: ").append(toIndentedString(reviewId)).append("\n");
+    sb.append("    userRatingReviewId: ").append(toIndentedString(userRatingReviewId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

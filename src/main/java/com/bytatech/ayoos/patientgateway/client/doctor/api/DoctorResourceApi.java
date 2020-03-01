@@ -5,10 +5,7 @@
  */
 package com.bytatech.ayoos.patientgateway.client.doctor.api;
 
-import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.DoctorAggregateDTO;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.DoctorDTO;
-import java.util.List;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T12:19:39.021+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-01T12:30:42.439+05:30[Asia/Colombo]")
 
 @Api(value = "DoctorResource", description = "the DoctorResource API")
 public interface DoctorResourceApi {
@@ -70,18 +67,6 @@ public interface DoctorResourceApi {
     ResponseEntity<List<DoctorDTO>> getAllDoctorsUsingGET(@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
-    @ApiOperation(value = "getDoctorByDoctorId", nickname = "getDoctorByDoctorIdUsingGET", notes = "", response = DoctorAggregateDTO.class, tags={ "doctor-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = DoctorAggregateDTO.class),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/doctor/{doctorId}",
-        produces = "*/*", 
-        method = RequestMethod.GET)
-    ResponseEntity<DoctorAggregateDTO> getDoctorByDoctorIdUsingGET(@ApiParam(value = "doctorId",required=true) @PathVariable("doctorId") String doctorId);
-
-
     @ApiOperation(value = "getDoctor", nickname = "getDoctorUsingGET", notes = "", response = DoctorDTO.class, tags={ "doctor-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = DoctorDTO.class),
@@ -92,46 +77,6 @@ public interface DoctorResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<DoctorDTO> getDoctorUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
-
-
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST1", notes = "", response = DoctorDTO.class, responseContainer = "List", tags={ "doctor-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = DoctorDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/doctors/toDto",
-        produces = "*/*", 
-        consumes = "application/json",
-        method = RequestMethod.POST)
-    ResponseEntity<List<DoctorDTO>> listToDtoUsingPOST1(@ApiParam(value = "doctor" ,required=true )  @Valid @RequestBody List<Doctor> doctor);
-
-
-    @ApiOperation(value = "modelToDto", nickname = "modelToDtoUsingPOST1", notes = "", response = DoctorDTO.class, tags={ "doctor-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = DoctorDTO.class),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/doctor/modelToDto",
-        produces = "*/*", 
-        consumes = "application/json",
-        method = RequestMethod.POST)
-    ResponseEntity<DoctorDTO> modelToDtoUsingPOST1(@ApiParam(value = "doctor" ,required=true )  @Valid @RequestBody Doctor doctor);
-
-
-    @ApiOperation(value = "searchDoctors", nickname = "searchDoctorsUsingGET", notes = "", response = DoctorDTO.class, responseContainer = "List", tags={ "doctor-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = DoctorDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/_search/doctors",
-        produces = "*/*", 
-        method = RequestMethod.GET)
-    ResponseEntity<List<DoctorDTO>> searchDoctorsUsingGET(@NotNull @ApiParam(value = "query", required = true) @Valid @RequestParam(value = "query", required = true) String query,@ApiParam(value = "Page number of the requested page") @Valid @RequestParam(value = "page", required = false) Integer page,@ApiParam(value = "Size of a page") @Valid @RequestParam(value = "size", required = false) Integer size,@ApiParam(value = "Sorting criteria in the format: property(,asc|desc). Default sort order is ascending. Multiple sort criteria are supported.") @Valid @RequestParam(value = "sort", required = false) List<String> sort);
 
 
     @ApiOperation(value = "updateDoctor", nickname = "updateDoctorUsingPUT", notes = "", response = DoctorDTO.class, tags={ "doctor-resource", })

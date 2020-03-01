@@ -1,223 +1,166 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
-import java.util.Objects;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.SessionInfo;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
-//import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
+ 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * WorkPlace
- */
-@Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T12:19:39.021+05:30[Asia/Calcutta]")
-//@Document(indexName="workplace")
-public class WorkPlace   {
-  @JsonProperty("doctor")
-  private Doctor doctor = null;
+ * A WorkPlace.
+ */ 
+public class WorkPlace implements Serializable {
 
-  @JsonProperty("id")
-  private Long id = null;
+    private static final long serialVersionUID = 1L;
+ 
+    private Long id;
+ 
+    private String doctorIdpCode;
+       
+    private String name;
+ 
+    private String locationName;
+ 
+    private String location;
 
-  @JsonProperty("location")
-  private String location = null;
+    @OneToMany(mappedBy = "workPlace")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<SessionInfo> sessionInfos = new HashSet<>();
 
-  @JsonProperty("locationName")
-  private String locationName = null;
+    @ManyToOne
+    @JsonIgnoreProperties("workPlaces")
+    private Doctor doctor;
 
-  @JsonProperty("name")
-  private String name = null;
-
-  @JsonProperty("sessionInfos")
-  @Valid
-  private List<SessionInfo> sessionInfos = null;
-
-  public WorkPlace doctor(Doctor doctor) {
-    this.doctor = doctor;
-    return this;
-  }
-
-  /**
-   * Get doctor
-   * @return doctor
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public Doctor getDoctor() {
-    return doctor;
-  }
-
-  public void setDoctor(Doctor doctor) {
-    this.doctor = doctor;
-  }
-
-  public WorkPlace id(Long id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public WorkPlace location(String location) {
-    this.location = location;
-    return this;
-  }
-
-  /**
-   * Get location
-   * @return location
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getLocation() {
-    return location;
-  }
-
-  public void setLocation(String location) {
-    this.location = location;
-  }
-
-  public WorkPlace locationName(String locationName) {
-    this.locationName = locationName;
-    return this;
-  }
-
-  /**
-   * Get locationName
-   * @return locationName
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getLocationName() {
-    return locationName;
-  }
-
-  public void setLocationName(String locationName) {
-    this.locationName = locationName;
-  }
-
-  public WorkPlace name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  /**
-   * Get name
-   * @return name
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public WorkPlace sessionInfos(List<SessionInfo> sessionInfos) {
-    this.sessionInfos = sessionInfos;
-    return this;
-  }
-
-  public WorkPlace addSessionInfosItem(SessionInfo sessionInfosItem) {
-    if (this.sessionInfos == null) {
-      this.sessionInfos = new ArrayList<SessionInfo>();
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public Long getId() {
+        return id;
     }
-    this.sessionInfos.add(sessionInfosItem);
-    return this;
-  }
 
-  /**
-   * Get sessionInfos
-   * @return sessionInfos
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public List<SessionInfo> getSessionInfos() {
-    return sessionInfos;
-  }
-
-  public void setSessionInfos(List<SessionInfo> sessionInfos) {
-    this.sessionInfos = sessionInfos;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    public void setId(Long id) {
+        this.id = id;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public String getDoctorIdpCode() {
+        return doctorIdpCode;
     }
-    WorkPlace workPlace = (WorkPlace) o;
-    return Objects.equals(this.doctor, workPlace.doctor) &&
-        Objects.equals(this.id, workPlace.id) &&
-        Objects.equals(this.location, workPlace.location) &&
-        Objects.equals(this.locationName, workPlace.locationName) &&
-        Objects.equals(this.name, workPlace.name) &&
-        Objects.equals(this.sessionInfos, workPlace.sessionInfos);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(doctor, id, location, locationName, name, sessionInfos);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class WorkPlace {\n");
-    
-    sb.append("    doctor: ").append(toIndentedString(doctor)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    locationName: ").append(toIndentedString(locationName)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    sessionInfos: ").append(toIndentedString(sessionInfos)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public WorkPlace doctorIdpCode(String doctorIdpCode) {
+        this.doctorIdpCode = doctorIdpCode;
+        return this;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public void setDoctorIdpCode(String doctorIdpCode) {
+        this.doctorIdpCode = doctorIdpCode;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public WorkPlace name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public WorkPlace locationName(String locationName) {
+        this.locationName = locationName;
+        return this;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public WorkPlace location(String location) {
+        this.location = location;
+        return this;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Set<SessionInfo> getSessionInfos() {
+        return sessionInfos;
+    }
+
+    public WorkPlace sessionInfos(Set<SessionInfo> sessionInfos) {
+        this.sessionInfos = sessionInfos;
+        return this;
+    }
+
+    public WorkPlace addSessionInfo(SessionInfo sessionInfo) {
+        this.sessionInfos.add(sessionInfo);
+        sessionInfo.setWorkPlace(this);
+        return this;
+    }
+
+    public WorkPlace removeSessionInfo(SessionInfo sessionInfo) {
+        this.sessionInfos.remove(sessionInfo);
+        sessionInfo.setWorkPlace(null);
+        return this;
+    }
+
+    public void setSessionInfos(Set<SessionInfo> sessionInfos) {
+        this.sessionInfos = sessionInfos;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public WorkPlace doctor(Doctor doctor) {
+        this.doctor = doctor;
+        return this;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof WorkPlace)) {
+            return false;
+        }
+        return id != null && id.equals(((WorkPlace) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    @Override
+    public String toString() {
+        return "WorkPlace{" +
+            "id=" + getId() +
+            ", doctorIdpCode='" + getDoctorIdpCode() + "'" +
+            ", name='" + getName() + "'" +
+            ", locationName='" + getLocationName() + "'" +
+            ", location='" + getLocation() + "'" +
+            "}";
+    }
 }
-

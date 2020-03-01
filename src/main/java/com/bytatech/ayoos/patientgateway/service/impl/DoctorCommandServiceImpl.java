@@ -1,5 +1,5 @@
 package com.bytatech.ayoos.patientgateway.service.impl;
-import com.bytatech.ayoos.patientgateway.service.*;
+import com.bytatech.ayoos.patientgateway.service.*; 
 import com.bytatech.ayoos.patientgateway.config.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,10 +21,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.bytatech.ayoos.patientgateway.client.doctor.api.DoctorResourceApi;
-import com.bytatech.ayoos.patientgateway.client.doctor.api.ReviewResourceApi;
+//import com.bytatech.ayoos.patientgateway.client.doctor.api.ReviewResourceApi;
 //import com.bytatech.ayoos.patientgateway.client.doctor.api.UserRatingResourceApi;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.Doctor;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.ReviewDTO;
+//import com.bytatech.ayoos.patientgateway.client.doctor.model.ReviewDTO;
 //import com.bytatech.ayoos.patientgateway.client.doctor.model.UserRatingDTO;
 //import com.bytatech.ayoos.patientgateway.service.*;
 
@@ -50,8 +50,8 @@ public class DoctorCommandServiceImpl implements DoctorCommandService{
 //	@Autowired
 //	UserRatingResourceApi userRatingResourceApi;
 	
-	@Autowired
-	ReviewResourceApi reviewResourceApi;
+//	@Autowired
+//	ReviewResourceApi reviewResourceApi;
 
 	
 
@@ -63,10 +63,10 @@ public class DoctorCommandServiceImpl implements DoctorCommandService{
 //		return userRatingResourceApi.createUserRatingUsingPOST(userRatingDTO);
 //	}
 //	
-	@Override
-	public ResponseEntity<ReviewDTO> createReview(ReviewDTO reviewDTO) {
-		log.debug("<<<<<<createReview >>>>>>>>{}",reviewDTO);
-		return reviewResourceApi.createReviewUsingPOST(reviewDTO);
-	}
+//	@Override
+//	public ResponseEntity<ReviewDTO> createReview(ReviewDTO reviewDTO) {
+//		log.debug("<<<<<<createReview >>>>>>>>{}",reviewDTO);
+//		return reviewResourceApi.createReviewUsingPOST(reviewDTO);
+//	}
 
 }

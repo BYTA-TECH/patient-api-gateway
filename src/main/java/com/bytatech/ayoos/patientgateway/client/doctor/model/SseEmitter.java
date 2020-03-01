@@ -10,56 +10,33 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * StatusDTO
+ * SseEmitter
  */
 @Validated
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-01T12:30:42.439+05:30[Asia/Colombo]")
 
-public class StatusDTO   {
-  @JsonProperty("id")
-  private Long id = null;
+public class SseEmitter   {
+  @JsonProperty("timeout")
+  private Long timeout = null;
 
-  @JsonProperty("status")
-  private String status = null;
-
-  public StatusDTO id(Long id) {
-    this.id = id;
+  public SseEmitter timeout(Long timeout) {
+    this.timeout = timeout;
     return this;
   }
 
   /**
-   * Get id
-   * @return id
+   * Get timeout
+   * @return timeout
   **/
   @ApiModelProperty(value = "")
 
 
-  public Long getId() {
-    return id;
+  public Long getTimeout() {
+    return timeout;
   }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public StatusDTO status(String status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getStatus() {
-    return status;
-  }
-
-  public void setStatus(String status) {
-    this.status = status;
+  public void setTimeout(Long timeout) {
+    this.timeout = timeout;
   }
 
 
@@ -71,23 +48,21 @@ public class StatusDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    StatusDTO statusDTO = (StatusDTO) o;
-    return Objects.equals(this.id, statusDTO.id) &&
-        Objects.equals(this.status, statusDTO.status);
+    SseEmitter sseEmitter = (SseEmitter) o;
+    return Objects.equals(this.timeout, sseEmitter.timeout);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status);
+    return Objects.hash(timeout);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class StatusDTO {\n");
+    sb.append("class SseEmitter {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    timeout: ").append(toIndentedString(timeout)).append("\n");
     sb.append("}");
     return sb.toString();
   }

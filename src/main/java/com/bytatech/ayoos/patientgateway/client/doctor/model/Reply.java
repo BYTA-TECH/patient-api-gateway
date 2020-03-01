@@ -1,135 +1,85 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
-import java.util.Objects;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.Review;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
-//import org.springframework.data.elasticsearch.annotations.Document;
-import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+ 
+
+import javax.persistence.*;
+ 
+import java.io.Serializable;
 
 /**
- * Reply
- */
-@Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T12:19:39.021+05:30[Asia/Calcutta]")
-//@Document(indexName="reply")
-public class Reply   {
-  @JsonProperty("id")
-  private Long id = null;
+ * A Reply.
+ */ 
+public class Reply implements Serializable {
 
-  @JsonProperty("reply")
-  private String reply = null;
+    private static final long serialVersionUID = 1L;
+ 
+    private Long id;
+ 
+    private String reply;
 
-  @JsonProperty("review")
-  private Review review = null;
+    @ManyToOne
+    @JsonIgnoreProperties("replies")
+    private UserRatingReview userRatingReview;
 
-  public Reply id(Long id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Get id
-   * @return id
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Reply reply(String reply) {
-    this.reply = reply;
-    return this;
-  }
-
-  /**
-   * Get reply
-   * @return reply
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getReply() {
-    return reply;
-  }
-
-  public void setReply(String reply) {
-    this.reply = reply;
-  }
-
-  public Reply review(Review review) {
-    this.review = review;
-    return this;
-  }
-
-  /**
-   * Get review
-   * @return review
-  **/
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public Review getReview() {
-    return review;
-  }
-
-  public void setReview(Review review) {
-    this.review = review;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public Long getId() {
+        return id;
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    public void setId(Long id) {
+        this.id = id;
     }
-    Reply reply = (Reply) o;
-    return Objects.equals(this.id, reply.id) &&
-        Objects.equals(this.reply, reply.reply) &&
-        Objects.equals(this.review, reply.review);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, reply, review);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Reply {\n");
-    
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    reply: ").append(toIndentedString(reply)).append("\n");
-    sb.append("    review: ").append(toIndentedString(review)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    public String getReply() {
+        return reply;
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    public Reply reply(String reply) {
+        this.reply = reply;
+        return this;
+    }
+
+    public void setReply(String reply) {
+        this.reply = reply;
+    }
+
+    public UserRatingReview getUserRatingReview() {
+        return userRatingReview;
+    }
+
+    public Reply userRatingReview(UserRatingReview userRatingReview) {
+        this.userRatingReview = userRatingReview;
+        return this;
+    }
+
+    public void setUserRatingReview(UserRatingReview userRatingReview) {
+        this.userRatingReview = userRatingReview;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Reply)) {
+            return false;
+        }
+        return id != null && id.equals(((Reply) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    @Override
+    public String toString() {
+        return "Reply{" +
+            "id=" + getId() +
+            ", reply='" + getReply() + "'" +
+            "}";
+    }
 }
-

@@ -5,8 +5,6 @@
  */
 package com.bytatech.ayoos.patientgateway.client.doctor.api;
 
-import java.util.List;
-import com.bytatech.ayoos.patientgateway.client.doctor.model.WorkPlace;
 import com.bytatech.ayoos.patientgateway.client.doctor.model.WorkPlaceDTO;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
@@ -27,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2019-05-25T12:19:39.021+05:30[Asia/Calcutta]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-01T12:30:42.439+05:30[Asia/Colombo]")
 
 @Api(value = "WorkPlaceResource", description = "the WorkPlaceResource API")
 public interface WorkPlaceResourceApi {
@@ -57,18 +55,6 @@ public interface WorkPlaceResourceApi {
     ResponseEntity<Void> deleteWorkPlaceUsingDELETE(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
 
 
-    @ApiOperation(value = "findAllWorkPlacesByDoctorId", nickname = "findAllWorkPlacesByDoctorIdUsingGET", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = WorkPlaceDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/findAllWorkPlacesByDoctorId/{doctorId}",
-        produces = "*/*", 
-        method = RequestMethod.GET)
-    ResponseEntity<List<WorkPlaceDTO>> findAllWorkPlacesByDoctorIdUsingGET(@ApiParam(value = "doctorId",required=true) @PathVariable("doctorId") Long doctorId);
-
-
     @ApiOperation(value = "getAllWorkPlaces", nickname = "getAllWorkPlacesUsingGET", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = WorkPlaceDTO.class, responseContainer = "List"),
@@ -91,20 +77,6 @@ public interface WorkPlaceResourceApi {
         produces = "*/*", 
         method = RequestMethod.GET)
     ResponseEntity<WorkPlaceDTO> getWorkPlaceUsingGET(@ApiParam(value = "id",required=true) @PathVariable("id") Long id);
-
-
-    @ApiOperation(value = "listToDto", nickname = "listToDtoUsingPOST7", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = WorkPlaceDTO.class, responseContainer = "List"),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/work-places/toDto",
-        produces = "*/*", 
-        consumes = "application/json",
-        method = RequestMethod.POST)
-    ResponseEntity<List<WorkPlaceDTO>> listToDtoUsingPOST7(@ApiParam(value = "workPlace" ,required=true )  @Valid @RequestBody List<WorkPlace> workPlace);
 
 
     @ApiOperation(value = "searchWorkPlaces", nickname = "searchWorkPlacesUsingGET", notes = "", response = WorkPlaceDTO.class, responseContainer = "List", tags={ "work-place-resource", })

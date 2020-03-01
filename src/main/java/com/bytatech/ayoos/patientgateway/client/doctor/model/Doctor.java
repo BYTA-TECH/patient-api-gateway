@@ -1,67 +1,66 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
+
+import org.hibernate.annotations.Cache;
+
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
+ 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * A Doctor.
- */
-
-public class Doctor {
+ */ 
+public class Doctor implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
  
-    private Long id;
-
-
-    private String imageLink;
-
-    
+    private Long id; 
+    private String imageLink; 
     private String doctorIdpCode;
-
-    
+ 
     private String specialization;
-
-  
+ 
     private String registerNumber;
-
-
+ 
     private LocalDate practiceSince;
-
-
-    private Double totalRating;
-
-
+ 
+    private Double totalRating; 
     private String firstName;
-
-   
+ 
     private String email;
-
  
     private Long phoneNumber;
+ 
+    private String dmsId;
 
-
+    @OneToOne
+    @JoinColumn(unique = true)
     private ContactInfo contactInfo;
 
-  
+    @OneToOne
+    @JoinColumn(unique = true)
     private PaymentSettings paymentSettings;
 
-  
+    @OneToOne
+    @JoinColumn(unique = true)
     private DoctorSettings doctorSettings;
 
-
+    @OneToMany(mappedBy = "doctor")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<WorkPlace> workPlaces = new HashSet<>();
 
-   
+    @OneToMany(mappedBy = "doctor")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Qualification> qualifications = new HashSet<>();
 
-
+    @OneToMany(mappedBy = "doctor")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<UserRatingReview> userRatingReviews = new HashSet<>();
-
-
-    private Set<Slot> slots = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -189,6 +188,19 @@ public class Doctor {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getDmsId() {
+        return dmsId;
+    }
+
+    public Doctor dmsId(String dmsId) {
+        this.dmsId = dmsId;
+        return this;
+    }
+
+    public void setDmsId(String dmsId) {
+        this.dmsId = dmsId;
+    }
+
     public ContactInfo getContactInfo() {
         return contactInfo;
     }
@@ -302,31 +314,6 @@ public class Doctor {
     public void setUserRatingReviews(Set<UserRatingReview> userRatingReviews) {
         this.userRatingReviews = userRatingReviews;
     }
-
-    public Set<Slot> getSlots() {
-        return slots;
-    }
-
-    public Doctor slots(Set<Slot> slots) {
-        this.slots = slots;
-        return this;
-    }
-
-    public Doctor addSlot(Slot slot) {
-        this.slots.add(slot);
-        slot.setDoctor(this);
-        return this;
-    }
-
-    public Doctor removeSlot(Slot slot) {
-        this.slots.remove(slot);
-        slot.setDoctor(null);
-        return this;
-    }
-
-    public void setSlots(Set<Slot> slots) {
-        this.slots = slots;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -358,6 +345,7 @@ public class Doctor {
             ", firstName='" + getFirstName() + "'" +
             ", email='" + getEmail() + "'" +
             ", phoneNumber=" + getPhoneNumber() +
+            ", dmsId='" + getDmsId() + "'" +
             "}";
     }
 }

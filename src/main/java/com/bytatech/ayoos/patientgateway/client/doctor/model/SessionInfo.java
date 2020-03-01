@@ -1,37 +1,45 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties; 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import javax.persistence.*;
+ 
 import java.io.Serializable;
-import java.time.OffsetDateTime;
+import java.time.Instant;
 import java.time.LocalDate;
 
 /**
  * A SessionInfo.
- */
-
-public class SessionInfo  {
+ */ 
+public class SessionInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-
+ 
     private Long id;
-
-   
+ 
+    private String doctorIdpCode;
+ 
     private String sessionName;
-
-
+ 
     private LocalDate date;
-
-
-    private OffsetDateTime fromTime;
-
-  
-    private OffsetDateTime toTime;
-
+ 
+    private Instant fromTime;
+ 
+    private Instant toTime;
  
     private Long interval;
+ 
+    private Long weekDay;
 
-   
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Status status;
+
+    @ManyToOne
+    @JsonIgnoreProperties("sessionInfos")
     private WorkPlace workPlace;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -41,6 +49,19 @@ public class SessionInfo  {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getDoctorIdpCode() {
+        return doctorIdpCode;
+    }
+
+    public SessionInfo doctorIdpCode(String doctorIdpCode) {
+        this.doctorIdpCode = doctorIdpCode;
+        return this;
+    }
+
+    public void setDoctorIdpCode(String doctorIdpCode) {
+        this.doctorIdpCode = doctorIdpCode;
     }
 
     public String getSessionName() {
@@ -69,29 +90,29 @@ public class SessionInfo  {
         this.date = date;
     }
 
-    public OffsetDateTime getFromTime() {
+    public Instant getFromTime() {
         return fromTime;
     }
 
-    public SessionInfo fromTime(OffsetDateTime fromTime) {
+    public SessionInfo fromTime(Instant fromTime) {
         this.fromTime = fromTime;
         return this;
     }
 
-    public void setFromTime(OffsetDateTime fromTime) {
+    public void setFromTime(Instant fromTime) {
         this.fromTime = fromTime;
     }
 
-    public OffsetDateTime getToTime() {
+    public Instant getToTime() {
         return toTime;
     }
 
-    public SessionInfo toTime(OffsetDateTime toTime) {
+    public SessionInfo toTime(Instant toTime) {
         this.toTime = toTime;
         return this;
     }
 
-    public void setToTime(OffsetDateTime toTime) {
+    public void setToTime(Instant toTime) {
         this.toTime = toTime;
     }
 
@@ -106,6 +127,32 @@ public class SessionInfo  {
 
     public void setInterval(Long interval) {
         this.interval = interval;
+    }
+
+    public Long getWeekDay() {
+        return weekDay;
+    }
+
+    public SessionInfo weekDay(Long weekDay) {
+        this.weekDay = weekDay;
+        return this;
+    }
+
+    public void setWeekDay(Long weekDay) {
+        this.weekDay = weekDay;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public SessionInfo status(Status status) {
+        this.status = status;
+        return this;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public WorkPlace getWorkPlace() {
@@ -142,11 +189,13 @@ public class SessionInfo  {
     public String toString() {
         return "SessionInfo{" +
             "id=" + getId() +
+            ", doctorIdpCode='" + getDoctorIdpCode() + "'" +
             ", sessionName='" + getSessionName() + "'" +
             ", date='" + getDate() + "'" +
             ", fromTime='" + getFromTime() + "'" +
             ", toTime='" + getToTime() + "'" +
             ", interval=" + getInterval() +
+            ", weekDay=" + getWeekDay() +
             "}";
     }
 }
