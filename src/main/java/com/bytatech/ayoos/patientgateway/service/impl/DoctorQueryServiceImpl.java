@@ -103,13 +103,14 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
 		builder.query(dslQuery);
         SearchResponse response = serviceUtility.searchResponseForObject("sessioninfo", dslQuery);
         SessionInfo sessionInfo= serviceUtility.getObjectResult(response, new SessionInfo());
-       
+       log.debug("rty");
         Instant fromTime=sessionInfo.getFromTime();
         Instant toTime=sessionInfo.getToTime();
        
         List <SessionInfo> sessionList =new ArrayList<> (); 
  
         while(fromTime.isBefore(toTime)){
+		log.debug("dfg");
         	long interval=sessionInfo.getInterval();
         	SessionInfo s=new SessionInfo();
         	s.setDate(sessionInfo.getDate());
