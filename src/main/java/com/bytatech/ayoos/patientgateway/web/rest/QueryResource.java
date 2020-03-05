@@ -54,9 +54,10 @@ public class QueryResource {
 		return doctorQueryService.findDoctorByDoctorIdpCode(doctorIdpCode);
 	}
 	
-	@GetMapping("/findSessionInfoByDoctorIdpCodeAndDate/{doctorIdpCode}/{date}/{statusId}")
-	public ResponseEntity<List<SessionInfo>>  findSessionInfoByDoctorIdpCodeAndDate(@PathVariable String doctorIdpCode,@PathVariable LocalDate date,@PathVariable Long statusId)
+	@GetMapping("/findSessionInfoByDoctorIdpCodeAndDate/{doctorIdpCode}/{date}/{statusId1}")
+	public ResponseEntity<List<SessionInfo>>  findSessionInfoByDoctorIdpCodeAndDate(@PathVariable String doctorIdpCode,@PathVariable LocalDate date,@PathVariable String statusId1)
 	{
+		Long statusId=Long.parseLong(statusId1);
 		return doctorQueryService.findSessionInfoByDoctorIdpCodeAndDate(doctorIdpCode,date,statusId);
 	}
 }
