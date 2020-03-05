@@ -17,6 +17,6 @@ public interface DoctorQueryService {
 	ResponseEntity<Doctor> findDoctorByDoctorIdpCode(String doctorIdpCode);
 	public List<String> findAllQualifications(Pageable pageable) ;
 
-	ResponseEntity<List<SessionInfo>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date);
+	ResponseEntity<List<SessionInfo>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date,Long statusId);
 
 }

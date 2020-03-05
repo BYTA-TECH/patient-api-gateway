@@ -1,6 +1,6 @@
 package com.bytatech.ayoos.patientgateway.service.impl;
 
-import java.io.IOException; 
+import java.io.IOException;  
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -96,14 +96,14 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
  * method to divide the session to slot according to interval 
  */
 	@Override
-	public ResponseEntity<List<SessionInfo>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date)
+	public ResponseEntity<List<SessionInfo>> findSessionInfoByDoctorIdpCodeAndDate(String doctorIdpCode, LocalDate date,Long statusId )
 	{
 		QueryBuilder dslQuery=QueryBuilders.boolQuery().must(QueryBuilders.termQuery("date",date));
 		SearchSourceBuilder builder = new SearchSourceBuilder();
 		builder.query(dslQuery);
         SearchResponse response = serviceUtility.searchResponseForObject("sessioninfo", dslQuery);
         SessionInfo sessionInfo= serviceUtility.getObjectResult(response, new SessionInfo());
-  
+       
         Instant fromTime=sessionInfo.getFromTime();
         Instant toTime=sessionInfo.getToTime();
        
@@ -119,10 +119,20 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
         	s.setWeekDay(sessionInfo.getWeekDay());
         	s.setWorkPlace(sessionInfo.getWorkPlace());
         	s.setInterval(sessionInfo.getInterval());
-            s.setToTime(fromTime.plus(interval,ChronoUnit.MINUTES));
+            s.setToTime(fromTime.plus(interval,ChronoUnit.MINUTES));             
         	sessionInfo.setFromTime(s.getToTime());
         	if(((s.getToTime()).isBefore(toTime))||((s.getToTime()).equals(toTime)))
+        		{
+        		Instant fromLimit=Instant.parse(sessionInfo.getDate()+"T00:00:00.000Z"),toLimit;
+        		//Select the interval{[0-6]->Morning,[6-12]->AfterNoon,[12-18]->Evening,[18-24]->Night}
+        		while((--statusId)>0)
+        		{
+        			fromLimit=fromLimit.plus(6,ChronoUnit.HOURS);    
+        		}
+        		toLimit=fromLimit.plus(6,ChronoUnit.HOURS);
+        		if((s.getToTime().isBefore(toLimit))&&(s.getToTime().isAfter(fromLimit))&&(s.getToTime().equals(toLimit)))
         		sessionList.add(s);
+        		}
         	fromTime=sessionInfo.getFromTime(); 
         }  
         
