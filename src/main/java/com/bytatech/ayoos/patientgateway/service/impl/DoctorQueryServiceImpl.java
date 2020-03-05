@@ -127,8 +127,10 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
         		//Select the interval{[0-6]->Morning,[6-12]->AfterNoon,[12-18]->Evening,[18-24]->Night}
         		while((--statusId)>0)
         		{
+				log.debug("abc");
         			fromLimit=fromLimit.plus(6,ChronoUnit.HOURS);    
         		}
+			log.debug("xyz");
         		toLimit=fromLimit.plus(6,ChronoUnit.HOURS);
         		if((s.getToTime().isBefore(toLimit))&&(s.getToTime().isAfter(fromLimit))&&(s.getToTime().equals(toLimit)))
         		sessionList.add(s);
