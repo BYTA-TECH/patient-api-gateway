@@ -104,13 +104,11 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
         SearchResponse response = serviceUtility.searchResponseForObject("sessioninfo", dslQuery);
         SessionInfo sessionInfo= serviceUtility.getObjectResult(response, new SessionInfo());
        
-        Instant fromTime=sessionInfo.getFromTime();
-        Instant toTime=sessionInfo.getToTime();
-       log.debug("rty============"+fromTime+"++++++"+toTime);
+        Instant fromTime=sessionInfo.getFromTime(); 
+        Instant toTime=sessionInfo.getToTime();  
         List <SessionInfo> sessionList =new ArrayList<> (); 
  
-        while(fromTime.isBefore(toTime)){
-		log.debug("dfg");
+        while(fromTime.isBefore(toTime)){	 
         	long interval=sessionInfo.getInterval();
         	SessionInfo s=new SessionInfo();
         	s.setDate(sessionInfo.getDate());
@@ -121,19 +119,17 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
         	s.setWorkPlace(sessionInfo.getWorkPlace());
         	s.setInterval(sessionInfo.getInterval());
             s.setToTime(fromTime.plus(interval,ChronoUnit.MINUTES));             
-        	sessionInfo.setFromTime(s.getToTime());
+        	sessionInfo.setFromTime(s.getToTime()); 
         	if(((s.getToTime()).isBefore(toTime))||((s.getToTime()).equals(toTime)))
         		{
         		Instant fromLimit=Instant.parse(sessionInfo.getDate()+"T00:00:00.000Z"),toLimit;
         		//Select the interval{[0-6]->Morning,[6-12]->AfterNoon,[12-18]->Evening,[18-24]->Night}
         		while((--statusId)>0)
         		{
-				log.debug("abc");
-        			fromLimit=fromLimit.plus(6,ChronoUnit.HOURS);    
-        		}
-			log.debug("xyz");
-        		toLimit=fromLimit.plus(6,ChronoUnit.HOURS);
-        		if((s.getToTime().isBefore(toLimit))&&(s.getToTime().isAfter(fromLimit))&&(s.getToTime().equals(toLimit)))
+                  fromLimit=fromLimit.plus(6,ChronoUnit.HOURS);    		 
+              	}			 
+        		toLimit=fromLimit.plus(6,ChronoUnit.HOURS);        		 
+        		if((s.getToTime().isBefore(toLimit))||(s.getToTime().isAfter(fromLimit))||(s.getToTime().equals(toLimit)))
         		sessionList.add(s);
         		}
         	fromTime=sessionInfo.getFromTime(); 
