@@ -1,8 +1,7 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
- 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;  
 
 import javax.persistence.*;
  

@@ -1,8 +1,6 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
- 
- 
- 
+
 import java.io.Serializable;
 
 /**
@@ -16,8 +14,7 @@ public class DoctorSettings implements Serializable {
  
     private String approvalType;
  
-    private Boolean isMailNotificationsEnabled;
- 
+    private Boolean isMailNotificationsEnabled; 
     private Boolean isSMSNotificationsEnabled;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

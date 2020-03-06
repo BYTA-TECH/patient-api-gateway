@@ -1,13 +1,11 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties; 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
- 
+import javax.persistence.*; 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;

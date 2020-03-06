@@ -1,7 +1,11 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+ 
 import java.io.Serializable;
+
+import javax.persistence.ManyToOne;
 
 /**
  * A Qualification.
@@ -12,7 +16,10 @@ public class Qualification implements Serializable {
  
     private Long id;
  
-    private String qualification; 
+    private String qualification;
+
+    @ManyToOne
+    @JsonIgnoreProperties("qualifications")
     private Doctor doctor;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

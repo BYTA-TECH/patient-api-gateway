@@ -3,6 +3,7 @@ package com.bytatech.ayoos.patientgateway.client.doctor.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -17,7 +18,7 @@ import javax.validation.constraints.*;
  * SessionInfoDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-01T12:30:42.439+05:30[Asia/Colombo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-06T14:06:54.455+05:30[Asia/Colombo]")
 
 public class SessionInfoDTO   {
   @JsonProperty("date")
@@ -37,6 +38,44 @@ public class SessionInfoDTO   {
 
   @JsonProperty("sessionName")
   private String sessionName = null;
+
+  /**
+   * Gets or Sets sessionStatus
+   */
+  public enum SessionStatusEnum {
+    AVAILABLE("AVAILABLE"),
+    
+    PENDING("PENDING"),
+    
+    RESERVED("RESERVED"),
+    
+    CANCELLED("CANCELLED");
+
+    private String value;
+
+    SessionStatusEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static SessionStatusEnum fromValue(String text) {
+      for (SessionStatusEnum b : SessionStatusEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("sessionStatus")
+  private SessionStatusEnum sessionStatus = null;
 
   @JsonProperty("statusId")
   private Long statusId = null;
@@ -172,6 +211,26 @@ public class SessionInfoDTO   {
     this.sessionName = sessionName;
   }
 
+  public SessionInfoDTO sessionStatus(SessionStatusEnum sessionStatus) {
+    this.sessionStatus = sessionStatus;
+    return this;
+  }
+
+  /**
+   * Get sessionStatus
+   * @return sessionStatus
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public SessionStatusEnum getSessionStatus() {
+    return sessionStatus;
+  }
+
+  public void setSessionStatus(SessionStatusEnum sessionStatus) {
+    this.sessionStatus = sessionStatus;
+  }
+
   public SessionInfoDTO statusId(Long statusId) {
     this.statusId = statusId;
     return this;
@@ -269,6 +328,7 @@ public class SessionInfoDTO   {
         Objects.equals(this.id, sessionInfoDTO.id) &&
         Objects.equals(this.interval, sessionInfoDTO.interval) &&
         Objects.equals(this.sessionName, sessionInfoDTO.sessionName) &&
+        Objects.equals(this.sessionStatus, sessionInfoDTO.sessionStatus) &&
         Objects.equals(this.statusId, sessionInfoDTO.statusId) &&
         Objects.equals(this.toTime, sessionInfoDTO.toTime) &&
         Objects.equals(this.weekDay, sessionInfoDTO.weekDay) &&
@@ -277,7 +337,7 @@ public class SessionInfoDTO   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, doctorIdpCode, fromTime, id, interval, sessionName, statusId, toTime, weekDay, workPlaceId);
+    return Objects.hash(date, doctorIdpCode, fromTime, id, interval, sessionName, sessionStatus, statusId, toTime, weekDay, workPlaceId);
   }
 
   @Override
@@ -291,6 +351,7 @@ public class SessionInfoDTO   {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    interval: ").append(toIndentedString(interval)).append("\n");
     sb.append("    sessionName: ").append(toIndentedString(sessionName)).append("\n");
+    sb.append("    sessionStatus: ").append(toIndentedString(sessionStatus)).append("\n");
     sb.append("    statusId: ").append(toIndentedString(statusId)).append("\n");
     sb.append("    toTime: ").append(toIndentedString(toTime)).append("\n");
     sb.append("    weekDay: ").append(toIndentedString(weekDay)).append("\n");

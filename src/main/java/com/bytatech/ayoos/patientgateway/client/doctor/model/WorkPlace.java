@@ -1,8 +1,7 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties; 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -22,7 +21,7 @@ public class WorkPlace implements Serializable {
     private Long id;
  
     private String doctorIdpCode;
-       
+ 
     private String name;
  
     private String locationName;

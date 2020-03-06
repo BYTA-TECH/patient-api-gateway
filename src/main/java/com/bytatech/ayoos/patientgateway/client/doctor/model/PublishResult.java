@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * PublishResult
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-01T12:30:42.439+05:30[Asia/Colombo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-06T14:06:54.455+05:30[Asia/Colombo]")
 
 public class PublishResult   {
   @JsonProperty("offset")

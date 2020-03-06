@@ -1,15 +1,17 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties; 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
-import javax.persistence.*;
  
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties; 
+import org.hibernate.annotations.Cache; 
 import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+ 
 
 /**
  * A SessionInfo.
@@ -33,6 +35,8 @@ public class SessionInfo implements Serializable {
     private Long interval;
  
     private Long weekDay;
+ 
+    private SessionStatus sessionStatus;
 
     @OneToOne
     @JoinColumn(unique = true)
@@ -142,6 +146,19 @@ public class SessionInfo implements Serializable {
         this.weekDay = weekDay;
     }
 
+    public SessionStatus getSessionStatus() {
+        return sessionStatus;
+    }
+
+    public SessionInfo sessionStatus(SessionStatus sessionStatus) {
+        this.sessionStatus = sessionStatus;
+        return this;
+    }
+
+    public void setSessionStatus(SessionStatus sessionStatus) {
+        this.sessionStatus = sessionStatus;
+    }
+
     public Status getStatus() {
         return status;
     }
@@ -196,6 +213,7 @@ public class SessionInfo implements Serializable {
             ", toTime='" + getToTime() + "'" +
             ", interval=" + getInterval() +
             ", weekDay=" + getWeekDay() +
+            ", sessionStatus='" + getSessionStatus() + "'" +
             "}";
     }
 }

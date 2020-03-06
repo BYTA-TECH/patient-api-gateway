@@ -1,8 +1,7 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
 
-import org.hibernate.annotations.Cache;
-
+import org.hibernate.annotations.Cache; 
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
@@ -19,8 +18,10 @@ public class Doctor implements Serializable {
 
     private static final long serialVersionUID = 1L;
  
-    private Long id; 
-    private String imageLink; 
+    private Long id;
+ 
+    private String imageLink;
+ 
     private String doctorIdpCode;
  
     private String specialization;
@@ -29,7 +30,8 @@ public class Doctor implements Serializable {
  
     private LocalDate practiceSince;
  
-    private Double totalRating; 
+    private Double totalRating;
+ 
     private String firstName;
  
     private String email;

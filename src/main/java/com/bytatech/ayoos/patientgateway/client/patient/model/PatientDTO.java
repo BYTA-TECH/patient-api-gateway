@@ -16,9 +16,12 @@ import javax.validation.constraints.*;
  * PatientDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-18T15:46:22.211+05:30[Asia/Colombo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-06T14:09:06.240+05:30[Asia/Colombo]")
 
 public class PatientDTO   {
+  @JsonProperty("address")
+  private String address = null;
+
   @JsonProperty("createdDate")
   private LocalDate createdDate = null;
 
@@ -27,9 +30,6 @@ public class PatientDTO   {
 
   @JsonProperty("dob")
   private LocalDate dob = null;
-
-  @JsonProperty("emailId")
-  private String emailId = null;
 
   @JsonProperty("id")
   private Long id = null;
@@ -43,8 +43,31 @@ public class PatientDTO   {
   @JsonProperty("location")
   private String location = null;
 
+  @JsonProperty("name")
+  private String name = null;
+
   @JsonProperty("phoneNumber")
   private Long phoneNumber = null;
+
+  public PatientDTO address(String address) {
+    this.address = address;
+    return this;
+  }
+
+  /**
+   * Get address
+   * @return address
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
 
   public PatientDTO createdDate(LocalDate createdDate) {
     this.createdDate = createdDate;
@@ -106,26 +129,6 @@ public class PatientDTO   {
 
   public void setDob(LocalDate dob) {
     this.dob = dob;
-  }
-
-  public PatientDTO emailId(String emailId) {
-    this.emailId = emailId;
-    return this;
-  }
-
-  /**
-   * Get emailId
-   * @return emailId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public String getEmailId() {
-    return emailId;
-  }
-
-  public void setEmailId(String emailId) {
-    this.emailId = emailId;
   }
 
   public PatientDTO id(Long id) {
@@ -208,6 +211,26 @@ public class PatientDTO   {
     this.location = location;
   }
 
+  public PatientDTO name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
   public PatientDTO phoneNumber(Long phoneNumber) {
     this.phoneNumber = phoneNumber;
     return this;
@@ -238,20 +261,21 @@ public class PatientDTO   {
       return false;
     }
     PatientDTO patientDTO = (PatientDTO) o;
-    return Objects.equals(this.createdDate, patientDTO.createdDate) &&
+    return Objects.equals(this.address, patientDTO.address) &&
+        Objects.equals(this.createdDate, patientDTO.createdDate) &&
         Objects.equals(this.dmsId, patientDTO.dmsId) &&
         Objects.equals(this.dob, patientDTO.dob) &&
-        Objects.equals(this.emailId, patientDTO.emailId) &&
         Objects.equals(this.id, patientDTO.id) &&
         Objects.equals(this.idpCode, patientDTO.idpCode) &&
         Objects.equals(this.imageLink, patientDTO.imageLink) &&
         Objects.equals(this.location, patientDTO.location) &&
+        Objects.equals(this.name, patientDTO.name) &&
         Objects.equals(this.phoneNumber, patientDTO.phoneNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(createdDate, dmsId, dob, emailId, id, idpCode, imageLink, location, phoneNumber);
+    return Objects.hash(address, createdDate, dmsId, dob, id, idpCode, imageLink, location, name, phoneNumber);
   }
 
   @Override
@@ -259,14 +283,15 @@ public class PatientDTO   {
     StringBuilder sb = new StringBuilder();
     sb.append("class PatientDTO {\n");
     
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("    createdDate: ").append(toIndentedString(createdDate)).append("\n");
     sb.append("    dmsId: ").append(toIndentedString(dmsId)).append("\n");
     sb.append("    dob: ").append(toIndentedString(dob)).append("\n");
-    sb.append("    emailId: ").append(toIndentedString(emailId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    idpCode: ").append(toIndentedString(idpCode)).append("\n");
     sb.append("    imageLink: ").append(toIndentedString(imageLink)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("}");
     return sb.toString();

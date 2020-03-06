@@ -10,10 +10,11 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * StatusDTO
+ * @deprecated This entity is replaced by SessionStatus enum
  */
+@ApiModel(description = "@deprecated This entity is replaced by SessionStatus enum")
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-01T12:30:42.439+05:30[Asia/Colombo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-06T14:06:54.455+05:30[Asia/Colombo]")
 
 public class StatusDTO   {
   @JsonProperty("id")

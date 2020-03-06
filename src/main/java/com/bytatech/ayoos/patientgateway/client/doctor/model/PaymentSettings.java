@@ -1,5 +1,6 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
+ 
 import java.io.Serializable;
 
 /**

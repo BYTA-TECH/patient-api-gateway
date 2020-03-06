@@ -1,18 +1,17 @@
 package com.bytatech.ayoos.patientgateway.client.doctor.model;
 
+
  
  
 import java.io.Serializable;
 
 /**
- * A Status.
- */
- 
+ * @deprecated This entity is replaced by\nSessionStatus enum
+ */ 
 public class Status implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-  
+ 
     private Long id;
  
     private String status;

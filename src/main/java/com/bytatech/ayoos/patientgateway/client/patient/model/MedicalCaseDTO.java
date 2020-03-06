@@ -1,7 +1,6 @@
 package com.bytatech.ayoos.patientgateway.client.patient.model;
 
 import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
@@ -17,7 +16,7 @@ import javax.validation.constraints.*;
  * MedicalCaseDTO
  */
 @Validated
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-18T15:46:22.211+05:30[Asia/Colombo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-06T14:09:06.240+05:30[Asia/Colombo]")
 
 public class MedicalCaseDTO   {
   @JsonProperty("consultedDate")
@@ -34,9 +33,6 @@ public class MedicalCaseDTO   {
 
   @JsonProperty("note")
   private String note = null;
-
-  @JsonProperty("patientId")
-  private Long patientId = null;
 
   public MedicalCaseDTO consultedDate(LocalDate consultedDate) {
     this.consultedDate = consultedDate;
@@ -140,26 +136,6 @@ public class MedicalCaseDTO   {
     this.note = note;
   }
 
-  public MedicalCaseDTO patientId(Long patientId) {
-    this.patientId = patientId;
-    return this;
-  }
-
-  /**
-   * Get patientId
-   * @return patientId
-  **/
-  @ApiModelProperty(value = "")
-
-
-  public Long getPatientId() {
-    return patientId;
-  }
-
-  public void setPatientId(Long patientId) {
-    this.patientId = patientId;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -174,13 +150,12 @@ public class MedicalCaseDTO   {
         Objects.equals(this.createdDate, medicalCaseDTO.createdDate) &&
         Objects.equals(this.diagnosed, medicalCaseDTO.diagnosed) &&
         Objects.equals(this.id, medicalCaseDTO.id) &&
-        Objects.equals(this.note, medicalCaseDTO.note) &&
-        Objects.equals(this.patientId, medicalCaseDTO.patientId);
+        Objects.equals(this.note, medicalCaseDTO.note);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(consultedDate, createdDate, diagnosed, id, note, patientId);
+    return Objects.hash(consultedDate, createdDate, diagnosed, id, note);
   }
 
   @Override
@@ -193,7 +168,6 @@ public class MedicalCaseDTO   {
     sb.append("    diagnosed: ").append(toIndentedString(diagnosed)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    note: ").append(toIndentedString(note)).append("\n");
-    sb.append("    patientId: ").append(toIndentedString(patientId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

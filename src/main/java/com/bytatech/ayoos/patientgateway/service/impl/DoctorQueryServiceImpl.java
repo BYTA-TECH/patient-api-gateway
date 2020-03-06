@@ -1,6 +1,6 @@
 package com.bytatech.ayoos.patientgateway.service.impl;
 
-import java.io.IOException;  
+import java.io.IOException;   
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -104,11 +104,11 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
         SearchResponse response = serviceUtility.searchResponseForObject("sessioninfo", dslQuery);
         SessionInfo sessionInfo= serviceUtility.getObjectResult(response, new SessionInfo());
        
-        Instant fromTime=sessionInfo.getFromTime();
-        Instant toTime=sessionInfo.getToTime(); 
+        Instant fromTime=sessionInfo.getFromTime(); 
+        Instant toTime=sessionInfo.getToTime();  
         List <SessionInfo> sessionList =new ArrayList<> (); 
  
-        while(fromTime.isBefore(toTime)){
+        while(fromTime.isBefore(toTime)){	 
         	long interval=sessionInfo.getInterval();
         	SessionInfo s=new SessionInfo();
         	s.setDate(sessionInfo.getDate());
@@ -126,12 +126,11 @@ public class DoctorQueryServiceImpl implements DoctorQueryService{
         		//Select the interval{[0-6]->Morning,[6-12]->AfterNoon,[12-18]->Evening,[18-24]->Night}
         		while((--statusId)>0)
         		{
-        			fromLimit=fromLimit.plus(6,ChronoUnit.HOURS);           		 
-        		}
-        		toLimit=fromLimit.plus(6,ChronoUnit.HOURS);
-        		 
+                  fromLimit=fromLimit.plus(6,ChronoUnit.HOURS);    		 
+              	}			 
+        		toLimit=fromLimit.plus(6,ChronoUnit.HOURS);        		 
         		if((s.getToTime().isBefore(toLimit))||(s.getToTime().isAfter(fromLimit))||(s.getToTime().equals(toLimit)))
-        		{sessionList.add(s);log.debug("Tesla");}
+        		sessionList.add(s);
         		}
         	fromTime=sessionInfo.getFromTime(); 
         }  

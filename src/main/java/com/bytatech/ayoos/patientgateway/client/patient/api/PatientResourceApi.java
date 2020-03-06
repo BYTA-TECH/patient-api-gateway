@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-02-18T15:46:22.211+05:30[Asia/Colombo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2020-03-06T14:09:06.240+05:30[Asia/Colombo]")
 
 @Api(value = "PatientResource", description = "the PatientResource API")
 public interface PatientResourceApi {
@@ -42,32 +42,6 @@ public interface PatientResourceApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<PatientDTO> createPatientUsingPOST(@ApiParam(value = "patientDTO" ,required=true )  @Valid @RequestBody PatientDTO patientDTO);
-
-
-    @ApiOperation(value = "createPersonOnDMS", nickname = "createPersonOnDMSUsingPOST", notes = "", tags={ "patient-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK"),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/testpeople",
-        consumes = "application/json",
-        method = RequestMethod.POST)
-    ResponseEntity<Void> createPersonOnDMSUsingPOST(@ApiParam(value = "patientDTO" ,required=true )  @Valid @RequestBody PatientDTO patientDTO);
-
-
-    @ApiOperation(value = "createSite", nickname = "createSiteUsingPOST", notes = "", response = String.class, tags={ "patient-resource", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = String.class),
-        @ApiResponse(code = 201, message = "Created"),
-        @ApiResponse(code = 401, message = "Unauthorized"),
-        @ApiResponse(code = 403, message = "Forbidden"),
-        @ApiResponse(code = 404, message = "Not Found") })
-    @RequestMapping(value = "/api/testsite/{siteId}",
-        produces = "*/*", 
-        method = RequestMethod.POST)
-    ResponseEntity<String> createSiteUsingPOST(@ApiParam(value = "siteId",required=true) @PathVariable("siteId") String siteId);
 
 
     @ApiOperation(value = "deletePatient", nickname = "deletePatientUsingDELETE", notes = "", tags={ "patient-resource", })
